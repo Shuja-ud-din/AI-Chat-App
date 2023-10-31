@@ -258,7 +258,7 @@ body {
   width: 242px;
   height: 56px;
   border-radius: 56px;
-  /* background: #989FD3; */
+  background: #ffff;
   padding: 8px, 16px, 8px, 8px;
   display: flex;
   align-items: center;

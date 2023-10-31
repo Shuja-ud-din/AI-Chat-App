@@ -23,7 +23,8 @@ const InputBar = () => {
 
   return (
     <div className="main-lower">
-      <div className="input-field">
+      <div className="input-field"
+        id='messageField'>
         <button className="upload">
           <img src={FileUpload} alt="" />
         </button>

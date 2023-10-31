@@ -136,11 +136,16 @@ body {
   -webkit-text-fill-color: transparent;
   font-size: 2.3rem;
   font-weight: 600;
+  margin: 1rem 3rem;
   text-align: center;
 }
 
 .lower-side img {
   object-fit: cover;
+}
+
+.long-input {
+  width: 120% !important;
 }
 
 .recent-chats {

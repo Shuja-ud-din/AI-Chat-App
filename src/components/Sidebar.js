@@ -36,6 +36,7 @@ const Sidebar = () => {
     const toggleSidebar = () => {
         document.getElementById('main').classList.toggle('bodyCollapse');
         document.getElementById('toggleItem').classList.toggle('short-sidebar');
+        document.getElementById('messageField').classList.toggle('long-input');
     }
 
     const toggleShowChats = () => {

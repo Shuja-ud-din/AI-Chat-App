@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import MainBar from "./components/MainBar";
+import Suggestion from "./components/Suggestion";
+import Objectives from "./components/Objectives";
+import InputBar from "./components/InputBar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sidebar />
+      <div className="main">
+        <div className="chat-interface">
+          <MainBar />
+          <Suggestion />
+          <Objectives />
+        </div>
+        <InputBar />
+      </div>
     </div>
   );
 }

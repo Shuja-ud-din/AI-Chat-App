@@ -2,6 +2,9 @@ import "../App";
 import React from 'react';
 import logo from "../assets/images/logo.png";
 import AskMe from "../assets/icons/ask-me.svg";
+import refreshIcon from '../assets/icons/refresh.svg'
+import settingsIcon from '../assets/icons/settings.svg'
+import logoutIcon from '../assets/icons/logout.svg'
 
 
 const MainBar = () => {
@@ -17,6 +20,17 @@ const MainBar = () => {
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
                         </p>
+                    </div>
+                    <div className="icon-box">
+                        <button className="mid-btn">
+                            <img src={refreshIcon} />
+                        </button>
+                        <button className="mid-btn">
+                            <img src={settingsIcon} />
+                        </button>
+                        <button className="mid-btn">
+                            <img src={logoutIcon} />
+                        </button>
                     </div>
                 </div>
                 <div className="main-btns">

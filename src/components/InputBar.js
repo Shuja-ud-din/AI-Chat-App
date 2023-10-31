@@ -1,46 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import EnterIcon from "../assets/icons/enter-icon.svg";
 import FileUpload from "../assets/icons/upload-file.svg";
 import MsgIcon from "../assets/icons/msg-icon.svg";
+import { ChatContext } from '../context/ChatData';
 
 
 const InputBar = () => {
 
-  const [recentChats, setRecentChats] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const { messages, setMessages } = useContext(ChatContext);
 
   const handleSendMessage = () => {
-
-    if (newMessage.trim()) {
-      const message = {
-        text: newMessage,
-        sender: "user",
-      };
-      message.style = {
-        marginBottom: "10px",
-      };
-      setMessages([...messages, message]);
-      setNewMessage("");
-      updateRecentChats(newMessage);
-    }
-  }
-
-  const updateRecentChats = (message) => {
-    if (recentChats.length >= 5) {
-      recentChats.pop(); // Limit the number of recent chats to 5
-    }
-    const trimmedMessage = message.split(" ").slice(0, 3).join(" ");
-    const trimmedMessageWithDots = `${trimmedMessage}...`;
-    setRecentChats([
+    setMessages([
+      ...messages,
       {
-        text: trimmedMessageWithDots,
-        icon: <img src={MsgIcon} alt="Message Icon" className="msg-icon" />,
-      },
-      ...recentChats,
+        messageText: newMessage
+      }
     ])
-  }
 
+    setNewMessage('')
+  }
 
   return (
     <div className="main-lower">
@@ -68,6 +47,6 @@ const InputBar = () => {
       </div>
     </div>
   )
-}
 
+}
 export default InputBar;

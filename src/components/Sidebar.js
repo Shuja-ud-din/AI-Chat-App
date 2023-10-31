@@ -11,10 +11,13 @@ const Sidebar = () => {
     const [recentChats, setRecentChats] = useState([
         { title: 'simply dummy text of...' },
         { title: 'make a type specimen...' },
-        { title: 'was popularised in the...' }
+        { title: 'was popularised in the...' },
+        { title: 'was popularised in the...' },
+        { title: 'was popularised in the...' },
     ]);
 
     const [activeChat, setActiveChat] = useState(0);
+    const [showChats, setShowChats] = useState(false);
 
 
     const switchChat = (index) => {
@@ -31,12 +34,20 @@ const Sidebar = () => {
     }
 
     const toggleSidebar = () => {
-        document.getElementById('toggleItem').classList.toggle('short-sidebar')
+        document.getElementById('main').classList.toggle('bodyCollapse');
+        document.getElementById('toggleItem').classList.toggle('short-sidebar');
+    }
+
+    const toggleShowChats = () => {
+        document.getElementById('chats-menu').classList.toggle('showLess');
+        document.getElementById('showChats').classList.toggle('rotate-icon');
+        setShowChats(!showChats);
     }
 
 
     return (
         <div className="sidebar" id='toggleItem'>
+            {/* <div className='stickSidebar'> */}
             <div className="upper-side">
                 <div className='columnFlex'>
                     <div className="upper-side-top">
@@ -57,7 +68,7 @@ const Sidebar = () => {
                 </div>
                 <div className="recent-chats">
                     <h2>Recent Chats</h2>
-                    <div className="query">
+                    <div className="query showLess" id='chats-menu'>
                         {
                             recentChats.map((chat, index) => {
                                 let activeClass = '';
@@ -80,12 +91,14 @@ const Sidebar = () => {
                                 )
                             })
                         }
-                        <div className='show-more'>
-                            <button className="chatIcon" style={{ height: '31px' }}>
-                                <img src={showMore} />
-                            </button>
-                            <p>Show more</p>
-                        </div>
+                    </div>
+                    <div className='show-more' onClick={toggleShowChats}>
+                        <button className="chatIcon" id='showChats' style={{ height: '31px' }}>
+                            <img src={showMore} />
+                        </button>
+                        <p>Show
+                            {(showChats) ? ' less' : ' more'}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -94,6 +107,7 @@ const Sidebar = () => {
                 <img src={LowerSidebarVector} alt="" />
             </div>
         </div>
+        // </div>
     )
 }
 

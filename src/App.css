@@ -26,6 +26,7 @@ body {
   border-right: 1px solid #fdfdfd;
   display: flex;
   height: 100vh;
+  position: fixed;
   overflow-y: auto;
   overflow-x: hidden;
   justify-content: space-between;
@@ -33,9 +34,14 @@ body {
   background: #fdfdfd;
 }
 
+.bodyCollapse {
+  margin-left: 100px !important;
+}
+
 .main {
   flex: 9;
   padding: 1.5rem;
+  margin-left: 320px;
   background: #f4f6fc;
 }
 
@@ -121,7 +127,7 @@ body {
 }
 
 .lower-side h2 {
-  background-image: linear-gradient(180.27deg, #220070 18.2%, #6e6cc8 106.65%);
+  background-image: linear-gradient(-45deg, #9caad7 18.2%, #9190e0 106.65%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2.3rem;
@@ -149,17 +155,26 @@ body {
   align-self: flex-start !important;
 }
 
+.showLess {
+  height: 180px;
+  overflow: hidden;
+}
+
 .query {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   border: none;
   outline: none;
   gap: 1rem;
   padding: 1.2rem 0;
   width: 95%;
   background: #fdfdfd;
+  transition: 0.5s ease;
+}
+
+.rotate-icon {
+  transform: rotate(180deg);
 }
 
 
@@ -517,5 +532,37 @@ body {
 .content-box {
   width: 100%;
   border-radius: 40px 40px 0 0;
+  position: relative;
   background: linear-gradient(201deg, rgba(110, 108, 200, 0.92) 16.53%, rgba(255, 255, 255, 0.79) 52.54%);
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  top: 4rem;
+  right: 4rem;
+  position: absolute;
+}
+
+.icon-box button {
+  height: 3rem;
+  width: 3rem;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1.5rem 3rem;
+}
+
+.text-container .mid-btn {
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.text-container p {
+  font-size: 1.7rem;
 }

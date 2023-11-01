@@ -19,6 +19,7 @@ body {
 .App {
   min-height: 100vh;
   display: flex;
+  /* width: 100%; */
 }
 
 .sidebar {
@@ -43,6 +44,7 @@ body {
   flex: 9;
   padding: 1.5rem;
   margin-left: 320px;
+  /* height: 100vh; */
   background: #f4f6fc;
 }
 
@@ -115,7 +117,7 @@ body {
 }
 
 .chat-interface {
-  margin-bottom: 10rem;
+  padding-bottom: 10rem;
 }
 
 .lower-side {
@@ -677,4 +679,12 @@ body {
   border-color: #a9a9df;
   font-weight: 600;
   background: #f4f6fc;
+}
+
+.static-top {
+  top: 0;
+  left: 4rem;
+  right: 4rem;
+  position: fixed;
+  margin: 0 4rem;
 }

@@ -8,10 +8,10 @@ import StaticBar from './StaticBar';
 const InputBar = () => {
 
   const [newMessage, setNewMessage] = useState("");
+  const [scroller, setScroller] = useState(0)
   const { messages, setMessages, setRenderComps } = useContext(ChatContext);
 
   function scrollToBottom() {
-    // document.body.scrollIntoView({ behavior: 'smooth', block: 'end' })
     document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'end' })
   }
 
@@ -26,11 +26,12 @@ const InputBar = () => {
 
     setRenderComps(<StaticBar />)
     setNewMessage('');
+    setScroller(scroller + 1)
   }
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages])
+  }, [scroller])
 
 
   return (

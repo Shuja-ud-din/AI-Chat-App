@@ -19,8 +19,8 @@ function App() {
       <Sidebar />
       <div className="main" ref={mainRef} id="main">
         <div className="chat-interface">
-          {/* {renderComs} */}
-          <StaticBar />
+          {renderComs}
+          {/* <StaticBar /> */}
           <Chat />
         </div>
         <InputBar />

@@ -1,21 +1,26 @@
 import "./App.css";
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import MainBar from "./components/MainBar";
-import Suggestion from "./components/Suggestion";
-import Objectives from "./components/Objectives";
 import InputBar from "./components/InputBar";
 import Chat from "./components/messageBox/Chat";
+import { ChatContext } from "./context/ChatData";
+import StaticBar from "./components/StaticBar";
 
 function App() {
+
+  const mainRef = useRef();
+
+  const { setMainDiv, renderComs } = useContext(ChatContext);
+  setMainDiv(mainRef)
+
   return (
     <div className="App">
       <Sidebar />
-      <div className="main" id="main">
+      <div className="main" ref={mainRef} id="main">
         <div className="chat-interface">
-          <MainBar />
-          <Suggestion />
-          <Objectives />
+          {/* {renderComs} */}
+          <StaticBar />
           <Chat />
         </div>
         <InputBar />

@@ -11,7 +11,7 @@ const MainBar = () => {
     return (
         <div className="main-top">
             <div className="main-inner">
-                <div className="content-box">
+                <div className="content-box" id="hideOnSub1">
                     <div className="main-top-upper">
                         <img src={logo} alt="" className="main-logo" />
                         <h2 >

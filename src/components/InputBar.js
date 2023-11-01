@@ -7,7 +7,12 @@ import { ChatContext } from '../context/ChatData';
 const InputBar = () => {
 
   const [newMessage, setNewMessage] = useState("");
-  const { messages, setMessages } = useContext(ChatContext);
+  const { messages, setMessages, mainDiv } = useContext(ChatContext);
+
+  function scrollToBottom() {
+    // document.body.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'end' })
+  }
 
   const handleSendMessage = () => {
     setMessages([
@@ -18,8 +23,13 @@ const InputBar = () => {
       }
     ])
 
-    setNewMessage('')
+    setNewMessage('');
   }
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages])
+
 
   return (
     <div className="main-lower">

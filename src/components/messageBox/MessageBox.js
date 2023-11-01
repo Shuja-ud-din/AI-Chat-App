@@ -59,11 +59,17 @@ const MessageBox = ({ answerIndex }) => {
         setMessages(updatedArr)
     }
 
+    const copyText = (textId) => {
+        const textBox = document.getElementById(textId).innerHTML;
+        // textBox.select();
+        navigator.clipboard.writeText(textBox);
+    }
+
     return (
         <>
             <div className='response-conatiner'>
                 <img src={logo} style={{ borderRadius: '50px', height: '40px', width: '40px' }} />
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid ut ullam iusto aspernatur quibusdam eaque aliquam ratione ad architecto dolores non illo facilis error velit culpa, iste magni quae quas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sed incidunt omnis dolores harum est magni ipsam ipsa laboriosam error delectus modi, expedita quos molestias ducimus eos earum porro veniam temporibus quidem eaque! Perferendis perspiciatis fugit doloremque mollitia aliquid accusamus.</p>
+                <p id={`response${answerIndex + 1}`}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid ut ullam iusto aspernatur quibusdam eaque aliquam ratione ad architecto dolores non illo facilis error velit culpa, iste magni quae quas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sed incidunt omnis dolores harum est magni ipsam ipsa laboriosam error delectus modi, expedita quos molestias ducimus eos earum porro veniam temporibus quidem eaque! Perferendis perspiciatis fugit doloremque mollitia aliquid accusamus.</p>
                 <div className="response-icons">
                     <button
                         onMouseOver={() => activeIcon(setColor1)}
@@ -79,7 +85,11 @@ const MessageBox = ({ answerIndex }) => {
                     >
                         <DislikeIcon color={color2} />
                     </button>
-                    <button className="" onMouseOver={() => activeIcon(setColor3)} onMouseOut={() => deactiveIcon(setColor3)}>
+                    <button className=""
+                        onMouseOver={() => activeIcon(setColor3)}
+                        onMouseOut={() => deactiveIcon(setColor3)}
+                        onClick={() => copyText(`response${answerIndex + 1}`)}
+                    >
                         <CopyIcon color={color3} />
                     </button>
                 </div>

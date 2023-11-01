@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import EnterIcon from "../assets/icons/enter-icon.svg";
 import FileUpload from "../assets/icons/upload-file.svg";
-import MsgIcon from "../assets/icons/msg-icon.svg";
 import { ChatContext } from '../context/ChatData';
 
 
@@ -14,7 +13,8 @@ const InputBar = () => {
     setMessages([
       ...messages,
       {
-        messageText: newMessage
+        messageText: newMessage,
+        feedback: {}
       }
     ])
 

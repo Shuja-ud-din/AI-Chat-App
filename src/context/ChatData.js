@@ -3,11 +3,13 @@ import React, { createContext, useState } from 'react'
 const ChatContext = createContext()
 
 const ChatData = ({ children }) => {
+
     const [messages, setMessages] = useState([]);
+    const [feedback, setFeedback] = useState();
 
     const dataObject = {
         messages,
-        setMessages
+        setMessages,
     }
     return (
         <ChatContext.Provider value={dataObject}>

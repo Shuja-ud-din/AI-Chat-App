@@ -22,7 +22,6 @@ body {
 }
 
 .sidebar {
-  transition: 0.3s all;
   border-right: 1px solid #fdfdfd;
   display: flex;
   height: 100vh;
@@ -32,6 +31,8 @@ body {
   justify-content: space-between;
   flex-direction: column;
   background: #fdfdfd;
+  -webkit-transition: all 1s linear 1s;
+  transition: all 1s linear 1s;
 }
 
 .bodyCollapse {
@@ -304,7 +305,7 @@ body {
 
 .main-mid .crossIcon {
   position: absolute;
-  top: 30%;
+  top: 2rem;
   right: 2rem;
   cursor: pointer;
 }
@@ -440,7 +441,7 @@ body {
 .flex-box {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .add-chat-btn {
@@ -581,4 +582,99 @@ body {
 
 .text-container p {
   font-size: 1.7rem;
+}
+
+.text-container h3 {
+  height: 50px;
+  width: 50px;
+  font-size: 2rem;
+}
+
+.response-box {
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto !important;
+  padding: 0 0 !important;
+  border-radius: 40px !important;
+}
+
+.response-box .crossIcon {
+  top: 1.5rem !important;
+}
+
+.response-conatiner img {
+  margin-right: 1.5rem;
+}
+
+.response-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 40px;
+}
+
+.response-icons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffff;
+  border-radius: 48px;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s all;
+}
+
+.response-conatiner {
+  display: flex;
+  padding: 2.2rem 3rem;
+}
+
+.response-conatiner p {
+  padding: 0 1rem;
+}
+
+.response-icons button:hover {
+  background-color: #6e6cc8;
+}
+
+.response-icons button img {
+  margin: 0;
+  padding: 0;
+  width: 20px;
+}
+
+.feedback-box {
+  width: 100%;
+  background: white;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 !important;
+  padding: 2rem !important;
+  height: auto;
+  border-radius: 0 0 30px 30px;
+}
+
+.feedback-btns {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.outline-btn {
+  background: white;
+  outline: none;
+  border-radius: 8px;
+  border: 2px solid var(--Dark-Grey, #6E6E73);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-right: 1.5rem;
+  transition: 0.3s all;
+}
+
+.outline-btn:hover {
+  border-color: #a9a9df;
+  font-weight: 600;
+  background: #f4f6fc;
 }

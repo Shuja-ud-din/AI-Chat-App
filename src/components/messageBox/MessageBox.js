@@ -75,7 +75,7 @@ const MessageBox = ({ answerIndex }) => {
     return (
         <>
             <div className='response-conatiner'>
-                <img src={logo} style={{ borderRadius: '50px', height: '40px', width: '40px' }} />
+                <img src={logo} style={{ borderRadius: '50px', height: '40px', width: '40px' }} alt="loading" />
                 <p id={`response${answerIndex + 1}`}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid ut ullam iusto aspernatur quibusdam eaque aliquam ratione ad architecto dolores non illo facilis error velit culpa, iste magni quae quas! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sed incidunt omnis dolores harum est magni ipsam ipsa laboriosam error delectus modi, expedita quos molestias ducimus eos earum porro veniam temporibus quidem eaque! Perferendis perspiciatis fugit doloremque mollitia aliquid accusamus.</p>
                 <div className="response-icons">
                     <button
@@ -100,7 +100,6 @@ const MessageBox = ({ answerIndex }) => {
                         <CopyIcon color={color3} />
                     </button>
                     <Snackbar
-                        sx={10}
                         anchorOrigin={{ vertical: openSnack.vertical, horizontal: openSnack.horizontal }}
                         open={openSnack.open}
                         onClose={() => setOpenSnack({ ...openSnack, open: false })}

@@ -38,7 +38,7 @@ const InputBar = () => {
       <div className="input-field"
         id='messageField'>
         <button className="upload">
-          <img src={FileUpload} alt="" />
+          <img src={FileUpload} alt="loading" />
         </button>
         <input
           type="text"
@@ -55,7 +55,7 @@ const InputBar = () => {
           onClick={() =>
             newMessage.trim() ? handleSendMessage() : undefined}
           className="send">
-          <img src={EnterIcon} alt="" />
+          <img src={EnterIcon} alt="loading" />
         </button>
       </div>
     </div>

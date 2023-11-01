@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Cross from "../../assets/icons/cross-main.svg";
 
 const FeedbackResponse = ({ feedback }) => {
@@ -20,7 +20,7 @@ const FeedbackResponse = ({ feedback }) => {
                         </div>
                     </> : <p>Thanks for the valuable feedback!</p>
                 }
-                <img src={Cross} className="crossIcon" alt="" />
+                <img src={Cross} className="crossIcon" alt="loading" />
             </div>
         </>
     )

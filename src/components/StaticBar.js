@@ -10,20 +10,20 @@ const StaticBar = () => {
             <div className="main-btns static-top">
                 <div style={{ display: 'flex' }}>
                     <button className="first-btn">
-                        <img src={logo} alt="" />
+                        <img src={logo} alt="loading" />
                         Internal Knowledge
                     </button>
                     <button>
-                        <img src={AskMe} alt="" />
+                        <img src={AskMe} alt="loading" />
                         Internal Knowledge
                     </button>
                 </div>
                 <div className="icon-box staticBar">
                     <button className="mid-btn">
-                        <img src={settingsIcon} />
+                        <img src={settingsIcon} alt="loading" />
                     </button>
                     <button className="mid-btn">
-                        <img src={logoutIcon} />
+                        <img src={logoutIcon} alt="loading" />
                     </button>
                 </div>
             </div>

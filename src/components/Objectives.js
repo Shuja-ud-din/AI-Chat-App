@@ -13,7 +13,7 @@ const Objectives = () => {
                     <p>Let us show you the your OKRs.</p>
                 </div>
                 <div className="enter-btn">
-                    <img src={EnterIcon} alt="" />
+                    <img src={EnterIcon} alt="loading" />
                 </div>
             </div>
 
@@ -23,7 +23,7 @@ const Objectives = () => {
                     <p>Let us show you the your OKRs.</p>
                 </div>
                 <div className="enter-btn">
-                    <img src={EnterIcon} alt="" />
+                    <img src={EnterIcon} alt="loading" />
                 </div>
             </div>
 
@@ -33,7 +33,7 @@ const Objectives = () => {
                     <p>Let us show you the your OKRs.</p>
                 </div>
                 <div className="enter-btn">
-                    <img src={EnterIcon} alt="" />
+                    <img src={EnterIcon} alt="loading" />
                 </div>
             </div>
         </div>

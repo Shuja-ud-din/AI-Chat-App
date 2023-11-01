@@ -52,7 +52,7 @@ const Sidebar = () => {
             <div className="upper-side">
                 <div className='columnFlex'>
                     <div className="upper-side-top">
-                        <img src={logo} alt="" className="logo" />
+                        <img src={logo} alt="loading" className="logo" />
                         <span className="brand">Lorem Ipsum</span>
                         <span className="version">Beta</span>
                     </div>
@@ -60,11 +60,11 @@ const Sidebar = () => {
                 </div>
                 <div className='flex-box buttonBox' style={{ width: '100%' }}>
                     <button className="mid-btn add-chat-btn" onClick={addNewChat}>
-                        <img src={PlusIcon} alt="" className="add-btn" />
+                        <img src={PlusIcon} alt="loading" className="add-btn" />
                         <p className='newChat-text'>New Chat</p>
                     </button>
                     <button className="mid-btn collapse-btn" onClick={toggleSidebar}>
-                        <img src={collapse} alt="" className="add-btn" />
+                        <img src={collapse} alt="loading" className="add-btn" />
                     </button>
                 </div>
                 <div className="recent-chats">
@@ -78,15 +78,16 @@ const Sidebar = () => {
                                 }
                                 return (
                                     <div
+                                        key={index}
                                         className={'chat-title ' + activeClass}
                                         onClick={() => switchChat(index)}
                                     >
                                         <button className="chatIcon" >
-                                            <img src={chatIcon} />
+                                            <img src={chatIcon} alt="loading" />
                                         </button>
                                         <p>{chat.title}</p>
                                         <button className="chatIcon deleteChat " >
-                                            <img src={chatIcon} />
+                                            <img src={chatIcon} alt="loading" />
                                         </button>
                                     </div>
                                 )
@@ -95,7 +96,7 @@ const Sidebar = () => {
                     </div>
                     <div className='show-more' onClick={toggleShowChats}>
                         <button className="chatIcon" id='showChats' style={{ height: '31px' }}>
-                            <img src={showMore} />
+                            <img src={showMore} alt="loading" />
                         </button>
                         <p>Show
                             {(showChats) ? ' less' : ' more'}
@@ -105,10 +106,9 @@ const Sidebar = () => {
             </div>
             <div className="lower-side">
                 <h2>Let's make today a great day for you!</h2>
-                <img src={LowerSidebarVector} alt="" />
+                <img src={LowerSidebarVector} alt="loading" />
             </div>
         </div>
-        // </div>
     )
 }
 

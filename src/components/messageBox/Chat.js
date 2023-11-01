@@ -13,7 +13,7 @@ const Chat = () => {
                 messages.map((message, index) => {
                     return (
                         <>
-                            <div className='text-container'>
+                            <div className='text-container' >
                                 <h3 className='mid-btn'>F</h3>
                                 <p>{message.messageText}</p>
                             </div>

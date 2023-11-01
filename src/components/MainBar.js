@@ -13,7 +13,7 @@ const MainBar = () => {
             <div className="main-inner">
                 <div className="content-box" id="hideOnSub1">
                     <div className="main-top-upper">
-                        <img src={logo} alt="" className="main-logo" />
+                        <img src={logo} alt="loading" className="main-logo" />
                         <h2 >
                             Welcome to <span className="lorem-para">Lorem Ipsum</span> 👋
                         </h2>
@@ -23,23 +23,23 @@ const MainBar = () => {
                     </div>
                     <div className="icon-box">
                         <button className="mid-btn">
-                            <img src={refreshIcon} />
+                            <img src={refreshIcon} alt="loading" />
                         </button>
                         <button className="mid-btn">
-                            <img src={settingsIcon} />
+                            <img src={settingsIcon} alt="loading" />
                         </button>
                         <button className="mid-btn">
-                            <img src={logoutIcon} />
+                            <img src={logoutIcon} alt="loading" />
                         </button>
                     </div>
                 </div>
                 <div className="main-btns">
                     <button className="first-btn">
-                        <img src={logo} alt="" />
+                        <img src={logo} alt="loading" />
                         Internal Knowledge
                     </button>
                     <button>
-                        <img src={AskMe} alt="" />
+                        <img src={AskMe} alt="loading" />
                         Internal Knowledge
                     </button>
                 </div>

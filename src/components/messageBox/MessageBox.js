@@ -4,6 +4,7 @@ import CopyIcon from '../customs/icons/CopyIcon'
 import LikeIcon from '../customs/icons/LikeIcon'
 import DislikeIcon from '../customs/icons/DislikeIcon'
 import { ChatContext } from '../../context/ChatData'
+import { Snackbar } from '@mui/material'
 
 const MessageBox = ({ answerIndex }) => {
 
@@ -30,6 +31,11 @@ const MessageBox = ({ answerIndex }) => {
     const [color1, setColor1] = useState('black');
     const [color2, setColor2] = useState('black');
     const [color3, setColor3] = useState('black');
+    const [openSnack, setOpenSnack] = useState({
+        open: false,
+        vertical: 'bottom',
+        horizontal: 'right',
+    })
 
     const activeIcon = (setter) => {
         setter('white')
@@ -63,6 +69,7 @@ const MessageBox = ({ answerIndex }) => {
         const textBox = document.getElementById(textId).innerHTML;
         // textBox.select();
         navigator.clipboard.writeText(textBox);
+        setOpenSnack({ ...openSnack, open: true })
     }
 
     return (
@@ -92,6 +99,14 @@ const MessageBox = ({ answerIndex }) => {
                     >
                         <CopyIcon color={color3} />
                     </button>
+                    <Snackbar
+                        sx={10}
+                        anchorOrigin={{ vertical: openSnack.vertical, horizontal: openSnack.horizontal }}
+                        open={openSnack.open}
+                        onClose={() => setOpenSnack({ ...openSnack, open: false })}
+                        message="Text Copied"
+                        key={openSnack.vertical + openSnack.horizontal}
+                    />
                 </div>
             </div>
         </>

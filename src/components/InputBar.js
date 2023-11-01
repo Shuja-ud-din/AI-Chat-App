@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import EnterIcon from "../assets/icons/enter-icon.svg";
 import FileUpload from "../assets/icons/upload-file.svg";
 import { ChatContext } from '../context/ChatData';
+import StaticBar from './StaticBar';
 
 
 const InputBar = () => {
 
   const [newMessage, setNewMessage] = useState("");
-  const { messages, setMessages, mainDiv } = useContext(ChatContext);
+  const { messages, setMessages, setRenderComps } = useContext(ChatContext);
 
   function scrollToBottom() {
     // document.body.scrollIntoView({ behavior: 'smooth', block: 'end' })
@@ -23,6 +24,7 @@ const InputBar = () => {
       }
     ])
 
+    setRenderComps(<StaticBar />)
     setNewMessage('');
   }
 

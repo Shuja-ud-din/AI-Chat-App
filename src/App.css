@@ -44,6 +44,7 @@ body {
   flex: 9;
   padding: 1.5rem;
   margin-left: 320px;
+  position: relative;
   /* height: 100vh; */
   background: #f4f6fc;
 }
@@ -269,6 +270,7 @@ body {
   gap: 1rem;
   font-size: 1.5rem;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .first-btn {
@@ -683,8 +685,30 @@ body {
 
 .static-top {
   top: 0;
+  /* width: 80vw; */
   left: 4rem;
   right: 4rem;
-  position: fixed;
+  /* position: absolute; */
+  transform: translateY(-15px);
   margin: 0 4rem;
+  z-index: 1;
+  justify-content: space-between !important;
+}
+
+.static-top .first-btn {
+  margin-right: 1rem;
+}
+
+.static-top .icon-box {
+  width: 150px;
+  top: 2.5rem !important;
+}
+
+.staticBar .mid-btn img {
+  width: 20px;
+}
+
+.staticBar .mid-btn {
+  padding: 1.8rem;
+  background: var(--Buttons---default-gray, #F2F2F2);
 }

@@ -121,6 +121,11 @@ body {
   padding-bottom: 10rem;
 }
 
+.active-btn {
+  border: 2px solid #989FD3 !important;
+  background-color: #E4E8FF !important;
+}
+
 .lower-side {
   background: #f4f6fc;
   border-radius: 32px;
@@ -389,7 +394,7 @@ body {
 }
 
 .input-field {
-  width: 70%;
+  width: 105%;
   border-radius: 48px;
   /* gap: 6rem; */
   display: flex;
@@ -464,6 +469,13 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* start changes */
+  padding-right: 5rem;
+  /* end changes */
+}
+
+.padd0 {
+  padding: 0 !important;
 }
 
 .chatIcon {
@@ -607,7 +619,7 @@ body {
 }
 
 .response-conatiner img {
-  margin-right: 1.5rem;
+  margin-right: 0, 1rem;
 }
 
 .response-icons {

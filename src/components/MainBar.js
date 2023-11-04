@@ -1,51 +1,59 @@
 import "../App";
-import React from 'react';
-import logo from "../assets/images/logo.png";
+import React, { useContext, useEffect, useState } from "react";
 import AskMe from "../assets/icons/ask-me.svg";
-import refreshIcon from '../assets/icons/refresh.svg'
-import settingsIcon from '../assets/icons/settings.svg'
-import logoutIcon from '../assets/icons/logout.svg'
-
+import refreshIcon from "../assets/icons/refresh.svg";
+import settingsIcon from "../assets/icons/settings.svg";
+import logoutIcon from "../assets/icons/logout.svg";
+import AramcoIcon from "../assets/icons/Aramco_icon.svg";
+import WorldIcon from '../assets/icons/world-icon.svg'
+import { AppContext } from "../context/AppData";
+import { tabs } from "./../utils/chatTabs";
 
 const MainBar = () => {
-    return (
-        <div className="main-top">
-            <div className="main-inner">
-                <div className="content-box" id="hideOnSub1">
-                    <div className="main-top-upper">
-                        <img src={logo} alt="loading" className="main-logo" />
-                        <h2 >
-                            Welcome to <span className="lorem-para">Lorem Ipsum</span> 👋
-                        </h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-                        </p>
-                    </div>
-                    <div className="icon-box">
-                        <button className="mid-btn">
-                            <img src={refreshIcon} alt="loading" />
-                        </button>
-                        <button className="mid-btn">
-                            <img src={settingsIcon} alt="loading" />
-                        </button>
-                        <button className="mid-btn">
-                            <img src={logoutIcon} alt="loading" />
-                        </button>
-                    </div>
-                </div>
-                <div className="main-btns">
-                    <button className="first-btn">
-                        <img src={logo} alt="loading" />
-                        Internal Knowledge
-                    </button>
-                    <button>
-                        <img src={AskMe} alt="loading" />
-                        Internal Knowledge
-                    </button>
-                </div>
-            </div>
-        </div>
-    )
+  const { activeTab, setActiveTab } = useContext(AppContext);
 
-}
+  return (
+    <div className="main-top">
+      <div className="main-inner">
+        <div className="content-box">
+          <div className="main-top-upper">
+            <img src={AskMe} alt="" className="main-logo" />
+            <h2>
+              Welcome to <span className="lorem-para">MetaBrain</span> 👋
+            </h2>
+            <p>
+              Explore our knowledge bases. Dive into the heart of Aramco with
+              Aramco Knowledge or embark on a world of information with World
+              Knowledge.
+            </p>
+          </div>
+          <div className="icon-box">
+            <button className="mid-btn">
+              <img src={refreshIcon} />
+            </button>
+            <button className="mid-btn">
+              <img src={settingsIcon} />
+            </button>
+            <button className="mid-btn">
+              <img src={logoutIcon} />
+            </button>
+          </div>
+        </div>
+        <div className="main-btns">
+          {tabs.map(({ label, value }, index) => (
+            <>
+              <button
+                onClick={() => setActiveTab(value)}
+                className={`${activeTab === value && "active-btn"}`}
+              >
+                <img src={(index === 0) ? AramcoIcon : WorldIcon} alt="" />
+                {label}
+              </button>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 export default MainBar;

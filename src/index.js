@@ -1,15 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import ChatData from './context/ChatData';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import AppData from "./context/AppData";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChatData>
+    <AppData>
       <App />
-    </ChatData>
+    </AppData>
   </React.StrictMode>
 );
-
-

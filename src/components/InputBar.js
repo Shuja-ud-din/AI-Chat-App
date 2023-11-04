@@ -1,18 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import EnterIcon from "../assets/icons/enter-icon.svg";
 import FileUpload from "../assets/icons/upload-file.svg";
-import { ChatContext } from '../context/ChatData';
-import StaticBar from './StaticBar';
-
+import { AppContext } from "../context/AppData";
 
 const InputBar = () => {
-
   const [newMessage, setNewMessage] = useState("");
-  const [scroller, setScroller] = useState(0)
-  const { messages, setMessages, setRenderComps } = useContext(ChatContext);
+  const [scroller, setScroller] = useState(0);
+  const { messages, setMessages, setConditional } = useContext(AppContext);
 
   function scrollToBottom() {
-    document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'end' })
+    document
+      .getElementById("main")
+      .scrollIntoView({ behavior: "smooth", block: "end" });
   }
 
   const handleSendMessage = () => {
@@ -20,24 +19,29 @@ const InputBar = () => {
       ...messages,
       {
         messageText: newMessage,
-        feedback: {}
-      }
-    ])
+        feedback: {},
+      },
+    ]);
 
-    setRenderComps(<StaticBar />)
-    setNewMessage('');
-    setScroller(scroller + 1)
+    timerFunction();
+
+    setNewMessage("");
+    setScroller(scroller + 1);
+  };
+
+  const timerFunction = () => {
+    setTimeout(() => {
+      setConditional(true)
+    }, 3000)
   }
 
   useEffect(() => {
     scrollToBottom();
-  }, [scroller])
-
+  }, [scroller]);
 
   return (
     <div className="main-lower">
-      <div className="input-field"
-        id='messageField'>
+      <div className="input-field" id="messageField">
         <button className="upload">
           <img src={FileUpload} alt="loading" />
         </button>
@@ -53,14 +57,13 @@ const InputBar = () => {
           }}
         />
         <button
-          onClick={() =>
-            newMessage.trim() ? handleSendMessage() : undefined}
-          className="send">
+          onClick={() => (newMessage.trim() ? handleSendMessage() : undefined)}
+          className="send"
+        >
           <img src={EnterIcon} alt="loading" />
         </button>
       </div>
     </div>
-  )
-
-}
+  );
+};
 export default InputBar;

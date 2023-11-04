@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from "../assets/images/logo.png"
+import logo from "../assets/icons/MetaBrain_icon.svg"
 import LowerSidebarVector from "../assets/images/Lower-Sidebar-Vector.png";
 import PlusIcon from "../assets/icons/plus-icon.svg";
 import collapse from '../assets/icons/collapse-menu.svg'
@@ -37,6 +37,7 @@ const Sidebar = () => {
         document.getElementById('main').classList.toggle('bodyCollapse');
         document.getElementById('toggleItem').classList.toggle('short-sidebar');
         document.getElementById('messageField').classList.toggle('long-input');
+        document.querySelector('.columnFlex').classList.toggle('padd0')
     }
 
     const toggleShowChats = () => {
@@ -53,10 +54,10 @@ const Sidebar = () => {
                 <div className='columnFlex'>
                     <div className="upper-side-top">
                         <img src={logo} alt="loading" className="logo" />
-                        <span className="brand">Lorem Ipsum</span>
+                        <span className="brand">MetaBrain</span>
                         <span className="version">Beta</span>
                     </div>
-                    <p className="tagline">Powered by Lorem Ipsum</p>
+                    <p className="tagline">Powered by Aramco.AI</p>
                 </div>
                 <div className='flex-box buttonBox' style={{ width: '100%' }}>
                     <button className="mid-btn add-chat-btn" onClick={addNewChat}>

@@ -1,25 +1,13 @@
 import "./App.css";
-import { useContext } from "react";
-import Sidebar from "./components/Sidebar";
-import InputBar from "./components/InputBar";
-import Chat from "./components/messageBox/Chat";
-import { ChatContext } from "./context/ChatData";
+import AppLayout from "./components/AppLayout";
+import ChatLayout from "./components/ChatLayout";
 
 function App() {
-
-
-  const { renderComs } = useContext(ChatContext);
-
   return (
     <div className="App">
-      <Sidebar />
-      <div className="main" id="main">
-        <div className="chat-interface">
-          {renderComs}
-          <Chat />
-        </div>
-        <InputBar />
-      </div>
+      <AppLayout>
+        <ChatLayout />
+      </AppLayout>
     </div>
   );
 }

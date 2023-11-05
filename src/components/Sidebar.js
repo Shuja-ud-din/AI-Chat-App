@@ -40,8 +40,9 @@ const Sidebar = () => {
         document.querySelector('.columnFlex').classList.toggle('padd0')
     }
 
+    const nChats = recentChats.length;
+
     const toggleShowChats = () => {
-        document.getElementById('chats-menu').classList.toggle('showLess');
         document.getElementById('showChats').classList.toggle('rotate-icon');
         setShowChats(!showChats);
     }
@@ -70,7 +71,7 @@ const Sidebar = () => {
                 </div>
                 <div className="recent-chats">
                     <h2>Recent Chats</h2>
-                    <div className="query showLess" id='chats-menu'>
+                    <div className="query" id='chats-menu' style={{ height: (showChats === true) ? `${6 * nChats}rem` : "18rem" }}>
                         {
                             recentChats.map((chat, index) => {
                                 let activeClass = '';

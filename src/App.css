@@ -23,6 +23,7 @@ body {
 }
 
 .sidebar {
+  width: 34rem;
   border-right: 1px solid #fdfdfd;
   display: flex;
   height: 100vh;
@@ -31,9 +32,7 @@ body {
   overflow-x: hidden;
   justify-content: space-between;
   flex-direction: column;
-  background: #fdfdfd;
-  -webkit-transition: all 1s linear 1s;
-  transition: all 1s linear 1s;
+  transition: all 1s;
 }
 
 .bodyCollapse {
@@ -46,6 +45,7 @@ body {
   margin-left: 319px;
   padding-top: 0px;
   position: relative;
+  transition: all 1s;
   /* height: 100vh; */
   background: #f4f6fc;
 }
@@ -82,7 +82,7 @@ body {
   margin-top: 0.4rem;
   margin-bottom: 2.5rem;
   margin-left: -2rem;
-
+  padding-left: 0.8rem;
 }
 
 .version {
@@ -173,10 +173,6 @@ body {
   align-self: flex-start !important;
 }
 
-.showLess {
-  height: 180px;
-  overflow: hidden;
-}
 
 .query {
   display: flex;
@@ -186,6 +182,7 @@ body {
   outline: none;
   gap: 1rem;
   padding: 1.2rem 0;
+  overflow: hidden;
   width: 95%;
   background: #fdfdfd;
   transition: 0.5s ease;
@@ -258,7 +255,21 @@ body {
   padding-left: 3rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
+  transition: all 1s;
+}
+
+.margin6 {
+  margin-top: 6rem;
+}
+
+.afterSubmit {
+  position: fixed;
+  top: 0;
+  left: 36.4rem;
+  right: 4.2rem;
+  z-index: 1;
 }
 
 .main-btns button {
@@ -276,6 +287,7 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
   cursor: pointer;
+  margin-right: 3rem;
 }
 
 .first-btn {
@@ -322,7 +334,7 @@ body {
 .btn-section {
   margin: 1.5rem 3rem;
   display: flex;
-  gap: 1rem;
+  gap: 4rem;
 }
 
 .individual-btn-section {
@@ -344,6 +356,7 @@ body {
   -webkit-text-fill-color: transparent;
   font-size: 1.6rem;
   font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
 .individual-btn-section p {
@@ -489,6 +502,7 @@ body {
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
+  transition: 1s;
   /* margin: 0.5rem; */
   cursor: pointer;
 }
@@ -536,6 +550,16 @@ body {
   width: 100px;
 }
 
+.lower-side,
+.recent-chats,
+.tagline,
+.version,
+.newChat-text,
+.brand {
+  transition: all 1s;
+  transition-delay: 0.5s;
+}
+
 .short-sidebar .lower-side,
 .short-sidebar .recent-chats,
 .short-sidebar .tagline,
@@ -545,11 +569,20 @@ body {
   opacity: 0;
   position: absolute;
   z-index: -1;
+  transition: 0.5s !important;
+}
+
+.short-sidebar .lower-side {
+  bottom: 0;
 }
 
 .short-sidebar .buttonBox {
   margin-top: 4rem;
   flex-direction: column-reverse;
+}
+
+.buttonBox {
+  transition: all 1s;
 }
 
 
@@ -723,4 +756,34 @@ body {
 .staticBar .mid-btn {
   padding: 1.8rem;
   background: var(--Buttons---default-gray, #F2F2F2);
+}
+
+.enter-btn {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f2f2f2;
+}
+
+.enter-btn img {
+  height: 24px;
+  width: 24px;
+}
+
+.staticIcons .mid-btn {
+  height: 3rem;
+  width: 3rem;
+  padding: 1rem;
+  margin: 0;
+  margin: 0 2rem;
+  background: #f2f2f2;
+}
+
+.staticIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
 }

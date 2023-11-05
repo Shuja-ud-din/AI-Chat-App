@@ -6,7 +6,7 @@ import { AppContext } from "../context/AppData";
 const InputBar = () => {
   const [newMessage, setNewMessage] = useState("");
   const [scroller, setScroller] = useState(0);
-  const { messages, setMessages, setConditional } = useContext(AppContext);
+  const { messages, setMessages, setConditional, setConditional2 } = useContext(AppContext);
 
   function scrollToBottom() {
     document
@@ -26,7 +26,11 @@ const InputBar = () => {
     timerFunction();
 
     setNewMessage("");
+    setConditional2(false);
     setScroller(scroller + 1);
+
+    document.querySelector('.main-btns').classList.add('afterSubmit');
+    document.querySelector('.chat-interface').classList.add('margin6')
   };
 
   const timerFunction = () => {

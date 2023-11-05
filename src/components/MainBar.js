@@ -10,12 +10,12 @@ import { AppContext } from "../context/AppData";
 import { tabs } from "./../utils/chatTabs";
 
 const MainBar = () => {
-  const { activeTab, setActiveTab } = useContext(AppContext);
+  const { activeTab, setActiveTab, conditional2 } = useContext(AppContext);
 
   return (
     <div className="main-top">
       <div className="main-inner">
-        <div className="content-box">
+        {conditional2 && <div className="content-box">
           <div className="main-top-upper">
             <img src={AskMe} alt="" className="main-logo" />
             <h2>
@@ -38,19 +38,29 @@ const MainBar = () => {
               <img src={logoutIcon} />
             </button>
           </div>
-        </div>
+        </div>}
         <div className="main-btns">
-          {tabs.map(({ label, value }, index) => (
-            <>
-              <button
-                onClick={() => setActiveTab(value)}
-                className={`${activeTab === value && "active-btn"}`}
-              >
-                <img src={(index === 0) ? AramcoIcon : WorldIcon} alt="" />
-                {label}
-              </button>
-            </>
-          ))}
+          <div style={{ display: 'flex' }}>
+            {tabs.map(({ label, value }, index) => (
+              <>
+                <button
+                  onClick={() => setActiveTab(value)}
+                  className={`${activeTab === value && "active-btn"}`}
+                >
+                  <img src={(index === 0) ? AramcoIcon : WorldIcon} alt="" />
+                  {label}
+                </button>
+              </>
+            ))}
+          </div>
+          {!conditional2 && <div className="staticIcons">
+            <button className="mid-btn">
+              <img src={settingsIcon} />
+            </button>
+            <button className="mid-btn">
+              <img src={logoutIcon} />
+            </button>
+          </div>}
         </div>
       </div>
     </div>

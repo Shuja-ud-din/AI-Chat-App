@@ -11,7 +11,7 @@ import {
 } from "./../utils/chatQuickActions";
 
 const ChatLayout = () => {
-  const { activeTab } = useContext(AppContext);
+  const { activeTab, conditional2 } = useContext(AppContext);
 
   const getActiveQuickActions = () => {
     const quickActions = {
@@ -24,8 +24,10 @@ const ChatLayout = () => {
 
   return (
     <div className="chat-interface">
-      <Banner />
-      <ChatQuickActions quickActions={getActiveQuickActions()} />
+      {conditional2 && <>
+        <Banner />
+        <ChatQuickActions quickActions={getActiveQuickActions()} />
+      </>}
       <Chat />
       <InputBar />
     </div>

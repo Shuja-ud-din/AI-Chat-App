@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import logo from "../assets/icons/MetaBrain_icon.svg"
 import LowerSidebarVector from "../assets/images/Lower-Sidebar-Vector.png";
 import PlusIcon from "../assets/icons/plus-icon.svg";
-import collapse from '../assets/icons/collapse-menu.svg'
+import normalBars from '../assets/icons/collapse-menu.svg'
 import chatIcon from '../assets/icons/msg-icon.svg'
 import showMore from '../assets/icons/show-more.svg'
+import collapseBars from '../assets/icons/Side menu.svg'
 
 const Sidebar = () => {
 
@@ -18,6 +19,7 @@ const Sidebar = () => {
 
     const [activeChat, setActiveChat] = useState(0);
     const [showChats, setShowChats] = useState(false);
+    const [collapse, setCollapse] = useState(false)
 
 
     const switchChat = (index) => {
@@ -34,6 +36,7 @@ const Sidebar = () => {
     }
 
     const toggleSidebar = () => {
+        setCollapse(!collapse)
         document.getElementById('main').classList.toggle('bodyCollapse');
         document.getElementById('toggleItem').classList.toggle('short-sidebar');
         document.getElementById('messageField').classList.toggle('long-input');
@@ -66,7 +69,7 @@ const Sidebar = () => {
                         <p className='newChat-text'>New Chat</p>
                     </button>
                     <button className="mid-btn collapse-btn" onClick={toggleSidebar}>
-                        <img src={collapse} alt="loading" className="add-btn" />
+                        <img src={(collapse === true) ? collapseBars : normalBars} alt="loading" className="add-btn" />
                     </button>
                 </div>
                 <div className="recent-chats">

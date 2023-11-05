@@ -8,14 +8,17 @@ import AramcoIcon from "../assets/icons/Aramco_icon.svg";
 import WorldIcon from '../assets/icons/world-icon.svg'
 import { AppContext } from "../context/AppData";
 import { tabs } from "./../utils/chatTabs";
+import acromoBanner from '../assets/images/acromoBg.png'
+import worldBanner from '../assets/images/bannerBg2.png'
 
 const MainBar = () => {
   const { activeTab, setActiveTab, conditional2 } = useContext(AppContext);
+  console.log(activeTab);
 
   return (
     <div className="main-top">
       <div className="main-inner">
-        {conditional2 && <div className="content-box">
+        {conditional2 && <div className="content-box" style={{ backgroundImage: `url(${(activeTab === "aramco_knowledge") ? acromoBanner : worldBanner})` }}>
           <div className="main-top-upper">
             <img src={AskMe} alt="" className="main-logo" />
             <h2>

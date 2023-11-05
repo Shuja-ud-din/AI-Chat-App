@@ -123,6 +123,7 @@ body {
 
 .active-btn {
   border: 2px solid #989FD3 !important;
+  font-weight: 500 !important;
   background-color: #E4E8FF !important;
 }
 
@@ -134,23 +135,23 @@ body {
   align-items: center;
   flex-direction: column;
   height: 361px;
-  width: 283px;
-  margin: 1.8rem;
+  margin: 3rem;
   padding: 1rem;
 }
 
 .lower-side h2 {
-  background-image: linear-gradient(-45deg, #9caad7 18.2%, #9190e0 106.65%);
+  background: linear-gradient(180.27deg, #220070 18.2%, #6E6CC8 106.65%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin: 1rem 3rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
 .lower-side img {
-  object-fit: cover;
+  width: 95%;
 }
 
 .long-input {
@@ -184,7 +185,6 @@ body {
   padding: 1.2rem 0;
   overflow: hidden;
   width: 95%;
-  background: #fdfdfd;
   transition: 0.5s ease;
 }
 
@@ -214,7 +214,6 @@ body {
   border-radius: 40px 40px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(201deg, rgba(110, 108, 200, 0.92) 16.53%, rgba(255, 255, 255, 0.79) 52.54%);
 }
 
 .main-top-upper {
@@ -275,11 +274,8 @@ body {
 .main-btns button {
   border: none;
   outline: none;
-  width: 242px;
-  height: 56px;
   border-radius: 56px;
   background: #ffff;
-  padding: 8px, 16px, 8px, 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,6 +284,8 @@ body {
   font-weight: 400;
   cursor: pointer;
   margin-right: 3rem;
+  padding: 0.7rem;
+  padding-right: 1.3rem;
 }
 
 .first-btn {
@@ -425,7 +423,7 @@ body {
   border: 1px solid var(--Dark-Grey, #6E6E73);
   background-color: #fdfdfd;
   height: 50px;
-  padding-left: 1rem;
+  padding-left: 2.5rem;
   margin: 0 2rem;
 }
 
@@ -548,6 +546,7 @@ body {
 
 .short-sidebar {
   width: 100px;
+  overflow: hidden;
 }
 
 .lower-side,
@@ -596,10 +595,10 @@ body {
 .content-box {
   width: 100%;
   border-radius: 40px 40px 0 0;
-  background-image: url(./assets//images/pattern.png);
   background-position: right bottom;
   background-repeat: no-repeat;
   position: relative;
+  background-size: cover;
 }
 
 .icon-box {

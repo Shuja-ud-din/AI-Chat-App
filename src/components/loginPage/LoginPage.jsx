@@ -27,17 +27,22 @@ const tabs = [
 
 const LoginPage = () => {
 
-    const [opacity, setOpacity] = useState(1)
+    const [opacity, setOpacity] = useState(1);
+    const [opacity1, setOpacity1] = useState(1);
 
     setTimeout(() => {
         opacity === 0 ? setOpacity(1) : setOpacity(0);
     }, 4000);
 
+    setTimeout(() => {
+        opacity1 === 0 ? setOpacity1(1) : setOpacity1(0);
+    }, 8000);
+
     return (
         <>
             <div className='main-container'>
                 <div className='first-container'>
-                    <div className='content'>
+                    <div className='LeftContent'>
                         <div className="main-head mb-3">
                             <div className="main-heading">
                                 <img src={logo} alt="" />
@@ -49,7 +54,7 @@ const LoginPage = () => {
                             <p className='poweredPara'>Powered by Aramco.AI</p>
                         </div>
 
-                        <div className='content_box'>
+                        <div className='content_box' style={{ opacity: `${opacity1}` }}>
                             <div className="main-btns" style={{ padding: "0", border: 'none' }}>
                                 <div style={{ display: 'flex' }}>
                                     {tabs.map(({ label, value }, index) => (
@@ -83,14 +88,14 @@ const LoginPage = () => {
                             </div>
                         </div>
 
-                        {/* <div className="thirdBoxContainer">
+                        <div className="thirdBoxContainer" style={{ opacity: `${(opacity1 - 1) * -1}` }} >
                             <div className="thirdBox">
                                 <img src={img1} className='img1' alt="" />
                                 <img src={img2} className='img2' alt="" />
                                 <img src={arrow} className='img3' alt="" />
                                 <img src={img4} className='img4' alt="" />
                             </div>
-                        </div> */}
+                        </div>
                     </div>
 
                     <div className="bottom_txt">

@@ -168,14 +168,15 @@ body {
     text-align: left;
 }
 
-.content {
+.LeftContent {
     height: 85vh;
 }
 
 .content_box {
     background: rgba(231, 238, 255, 1);
     border-radius: 2rem;
-    position: relative;
+    position: absolute;
+    transition: 1s;
     width: 460px;
 }
 
@@ -240,6 +241,10 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+.thirdBoxContainer {
+    transition: 1s;
 }
 
 .sphereBox img {

@@ -9,6 +9,10 @@ import WorldIcon from '../../assets/icons/world-icon.svg'
 import circlePattern from '../../assets/images/circlePattern.png'
 import lowerSidebar from "../../assets/images/smalIcon.png"
 import singleSphere from "../../assets/images/singleSphere.png"
+import arrow from "../../assets/images/arrowrounded.png"
+import img1 from "../../assets/images/image1.png"
+import img2 from "../../assets/images/image2.png"
+import img4 from "../../assets/images/image4.png"
 
 const tabs = [
     {
@@ -23,11 +27,11 @@ const tabs = [
 
 const LoginPage = () => {
 
-    const [opacity, setOpacity] = useState(0)
+    const [opacity, setOpacity] = useState(1)
 
     setTimeout(() => {
         opacity === 0 ? setOpacity(1) : setOpacity(0);
-    }, 2000);
+    }, 4000);
 
     return (
         <>
@@ -50,19 +54,23 @@ const LoginPage = () => {
                                 <div style={{ display: 'flex' }}>
                                     {tabs.map(({ label, value }, index) => (
                                         <>
-                                            <button
+                                            {index === 0 && <button
                                                 className={`mainWrldBtn${index}`}
                                             >
                                                 <img src={(index === 0) ? AramcoIcon : WorldIcon} alt="" />
                                                 {label}
-                                            </button>
+                                            </button>}
+                                            {(!!opacity && index === 1) && <button
+                                                className={`mainWrldBtn${index}`}
+                                            >
+                                                <img src={(index === 0) ? AramcoIcon : WorldIcon} alt="" />
+                                                {label}
+                                            </button>}
                                         </>
                                     ))}
                                 </div>
                             </div>
                             <div className='sphereBox'>
-                                {/* {!!opacity && <img src={circlePattern} alt="" style={{ opacity: `${opacity}` }} />}
-                                {!!opacity || <img src={singleSphere} alt="" style={{ opacity: `${(opacity - 1) * -1}` }} />} */}
                                 <img src={circlePattern} alt="" style={{ opacity: `${opacity}` }} />
                                 <img src={singleSphere} alt="" style={{ opacity: `${(opacity - 1) * -1}` }} />
                             </div>
@@ -74,6 +82,15 @@ const LoginPage = () => {
                                 </p>
                             </div>
                         </div>
+
+                        {/* <div className="thirdBoxContainer">
+                            <div className="thirdBox">
+                                <img src={img1} className='img1' alt="" />
+                                <img src={img2} className='img2' alt="" />
+                                <img src={arrow} className='img3' alt="" />
+                                <img src={img4} className='img4' alt="" />
+                            </div>
+                        </div> */}
                     </div>
 
                     <div className="bottom_txt">

@@ -33,6 +33,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    position: relative;
     background: var(--White, #FDFDFD);
 }
 
@@ -167,10 +168,15 @@ body {
     text-align: left;
 }
 
+.content {
+    height: 85vh;
+}
+
 .content_box {
     background: rgba(231, 238, 255, 1);
     border-radius: 2rem;
     position: relative;
+    width: 460px;
 }
 
 .content_box .main-btns {
@@ -240,4 +246,32 @@ body {
     transition: 1s;
     height: 100%;
     position: absolute;
+}
+
+.thirdBox {
+    position: relative;
+    z-index: 1;
+}
+
+.thirdBox .img1 {
+    position: absolute;
+}
+
+
+.thirdBox .img2 {
+    position: absolute;
+    top: 15rem;
+    left: 4rem;
+}
+
+.thirdBox .img3 {
+    position: absolute;
+    top: 21rem;
+    right: -32rem;
+}
+
+.thirdBox .img4 {
+    position: absolute;
+    top: 33rem;
+    left: 4rem;
 }

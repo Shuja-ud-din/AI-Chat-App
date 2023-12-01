@@ -29,6 +29,7 @@ const LoginPage = () => {
 
     const [opacity, setOpacity] = useState(1);
     const [opacity1, setOpacity1] = useState(1);
+    const [isPassowrd, setIsPassword] = useState(true)
 
     setTimeout(() => {
         opacity === 0 ? setOpacity(1) : setOpacity(0);
@@ -120,8 +121,8 @@ const LoginPage = () => {
                             <div className='first-input'>
                                 <p className='input-label'>Aramco Password</p>
                                 <div className='input-outer'>
-                                    <input type="password" placeholder='' />
-                                    <span>
+                                    <input type={isPassowrd === true ? "password" : "text"} placeholder='' style={{ width: '27rem' }} />
+                                    <span onClick={() => setIsPassword(!isPassowrd)}>
                                         <img src={blockEye} alt="" />
                                     </span>
                                 </div>

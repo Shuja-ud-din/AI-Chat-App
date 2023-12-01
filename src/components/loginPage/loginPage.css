@@ -126,6 +126,11 @@ body {
     border: 1px solid #6E6CC8;
     border-radius: 34px;
     cursor: pointer;
+    background: white;
+}
+
+.login-button:hover {
+    background: #DCE0E7;
 }
 
 .input-outer {

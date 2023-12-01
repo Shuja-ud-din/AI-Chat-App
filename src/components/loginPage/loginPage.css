@@ -225,3 +225,19 @@ body {
     text-align: left;
 
 }
+
+.sphereBox {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    transition: 1s;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sphereBox img {
+    transition: 1s;
+    height: 100%;
+    position: absolute;
+}

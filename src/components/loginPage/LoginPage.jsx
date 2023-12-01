@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./loginPage.css"
 import blockEye from "../../assets/images/blockEye.png"
 import symbol from "../../assets/images/symbol 1.png"
@@ -8,6 +8,7 @@ import AramcoIcon from "../..//assets/icons/Aramco_icon.svg";
 import WorldIcon from '../../assets/icons/world-icon.svg'
 import circlePattern from '../../assets/images/circlePattern.png'
 import lowerSidebar from "../../assets/images/smalIcon.png"
+import singleSphere from "../../assets/images/singleSphere.png"
 
 const tabs = [
     {
@@ -21,6 +22,13 @@ const tabs = [
 ];
 
 const LoginPage = () => {
+
+    const [opacity, setOpacity] = useState(0)
+
+    setTimeout(() => {
+        opacity === 0 ? setOpacity(1) : setOpacity(0);
+    }, 2000);
+
     return (
         <>
             <div className='main-container'>
@@ -52,8 +60,11 @@ const LoginPage = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div>
-                                <img src={circlePattern} alt="" />
+                            <div className='sphereBox'>
+                                {/* {!!opacity && <img src={circlePattern} alt="" style={{ opacity: `${opacity}` }} />}
+                                {!!opacity || <img src={singleSphere} alt="" style={{ opacity: `${(opacity - 1) * -1}` }} />} */}
+                                <img src={circlePattern} alt="" style={{ opacity: `${opacity}` }} />
+                                <img src={singleSphere} alt="" style={{ opacity: `${(opacity - 1) * -1}` }} />
                             </div>
                             <div className='nano-box'>
                                 <img src={lowerSidebar} alt="" />

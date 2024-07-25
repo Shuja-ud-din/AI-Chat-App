@@ -1,9 +1,15 @@
-import React from "react";
 import "../App";
 import EnterIcon from "../assets/icons/enter-icon.svg";
 
-const ChatQuickActions = ({ quickActions }) => {
-  const handleActiveAction = (action) => {
+interface IProps {
+  quickActions: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const ChatQuickActions = ({ quickActions }: IProps) => {
+  const handleActiveAction = (action: any) => {
     console.log("action => ", action);
   };
   return (

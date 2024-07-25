@@ -1,16 +1,13 @@
 import { useContext } from "react";
-
-import InputBar from "./InputBar";
-import Chat from "./messageBox/Chat";
-import Banner from "./Banner";
-import ChatQuickActions from "./ChatQuickActions";
-import { AppContext } from "./../context/AppData";
+import { AppContext } from "../context/AppData";
 import {
   aramcoKnowledgeQuickActions,
   worldKnowledgeQuickActions,
-} from "./../utils/chatQuickActions";
+} from "../utils/chatQuickActions";
+import Banner from "../components/Banner";
+import ChatQuickActions from "../components/ChatQuickActions";
 
-const ChatLayout = () => {
+const ChatPage = () => {
   const { activeTab, conditional2 } = useContext(AppContext);
 
   const getActiveQuickActions = () => {
@@ -19,19 +16,22 @@ const ChatLayout = () => {
       aramco_knowledge: aramcoKnowledgeQuickActions,
     };
 
+    // @ts-ignore
     return quickActions[activeTab];
   };
 
   return (
     <div className="chat-interface">
-      {conditional2 && <>
-        <Banner />
-        <ChatQuickActions quickActions={getActiveQuickActions()} />
-      </>}
-      <Chat />
-      <InputBar />
+      {conditional2 && (
+        <>
+          <Banner />
+          <ChatQuickActions quickActions={getActiveQuickActions()} />
+        </>
+      )}
+      {/* <Chat />
+      <InputBar /> */}
     </div>
   );
 };
 
-export default ChatLayout;
+export default ChatPage;

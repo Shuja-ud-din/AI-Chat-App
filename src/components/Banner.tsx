@@ -1,5 +1,3 @@
-import React from "react";
-import "../App";
 import LowerSidebarVector from "../assets/images/Lower-Sidebar-Vector.png";
 import Cross from "../assets/icons/cross-main.svg";
 

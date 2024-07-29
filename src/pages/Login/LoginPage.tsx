@@ -12,6 +12,7 @@ import arrow from "../../assets/images/arrowrounded.png";
 import img1 from "../../assets/images/image1.png";
 import img2 from "../../assets/images/image2.png";
 import img4 from "../../assets/images/image4.png";
+import { useNavigate } from "react-router-dom";
 
 const tabs = [
   {
@@ -28,7 +29,7 @@ const LoginPage = () => {
   const [opacity, setOpacity] = useState(1);
   const [opacity1, setOpacity1] = useState(1);
   const [isPassowrd, setIsPassword] = useState(true);
-
+  const navigate = useNavigate()
   setTimeout(() => {
     opacity === 0 ? setOpacity(1) : setOpacity(0);
   }, 4000);
@@ -155,7 +156,7 @@ const LoginPage = () => {
                 </div>
               </div>
               <div className="button_box">
-                <button className="login-button" type="submit">
+                <button className="login-button" onClick={() => navigate('/app')} type="submit">
                   Login
                 </button>
               </div>

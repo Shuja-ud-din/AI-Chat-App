@@ -6,6 +6,8 @@ import {
 } from "../utils/chatQuickActions";
 import Banner from "../components/Banner";
 import ChatQuickActions from "../components/ChatQuickActions";
+import InputBar from "../components/InputBar";
+import Chat from "../components/messageBox/Chat";
 
 const ChatPage = () => {
   const { activeTab, conditional2 } = useContext(AppContext);
@@ -28,8 +30,8 @@ const ChatPage = () => {
           <ChatQuickActions quickActions={getActiveQuickActions()} />
         </>
       )}
-      {/* <Chat />
-      <InputBar /> */}
+      <Chat />
+      <InputBar />
     </div>
   );
 };

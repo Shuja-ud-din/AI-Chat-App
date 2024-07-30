@@ -59,9 +59,9 @@ const InputBar: React.FC = () => {
     };
 
     return (
-        <div className="main-lower">
-            <div className="input-field" id="messageField">
-                <button className="upload">
+        <div className="mt-auto w-full flex flex-col items-center justify-center">
+            <div className="w-full min-w-[10%] rounded-full flex items-center justify-center fixed top-[90%]">
+                <button className="border-none cursor-pointer rounded-full h-[50px] w-[50px] bg-[#fdfdfd]">
                     <img src={FileUpload} alt="Upload" />
                 </button>
                 <input
@@ -70,10 +70,11 @@ const InputBar: React.FC = () => {
                     onChange={handleInputChange}
                     placeholder="Enter your question here"
                     onKeyUp={handleKeyUp}
+                    className="w-[65%] min-w-[2rem] outline-none rounded-full border border-[#6e6e73] bg-[#fdfdfd] h-[50px] pl-[2.5rem] mx-[2rem] focus:border-[#6e6cc8]"
                 />
                 <button
                     onClick={() => (newMessage.trim() ? handleSendMessage() : undefined)}
-                    className="send"
+                    className="border-none cursor-pointer rounded-full h-[50px] w-[50px] bg-[#fdfdfd]"
                 >
                     <img src={EnterIcon} alt="Send" />
                 </button>

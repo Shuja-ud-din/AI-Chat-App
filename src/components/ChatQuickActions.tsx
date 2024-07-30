@@ -12,7 +12,7 @@ const ChatQuickActions = ({ quickActions }: IProps) => {
     console.log("action => ", action);
   };
   return (
-    <div className="flex flex-wrap gap-[4rem] lg:mx-[3rem] my-[1.5rem] w-full sm:mx-[0rem]">
+    <div className="flex flex-wrap gap-[4rem] my-[1.5rem] w-full sm:mx-[0rem]">
 
       {quickActions.map((action) => (
         <div

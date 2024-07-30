@@ -3,7 +3,7 @@ import Cross from "../assets/icons/cross-main.svg";
 
 const Banner = () => {
   return (
-    <div className="bg-[#e7eeff] h-[72px] text-black flex items-center px-12 py-6 gap-2 rounded-[24px] my-6 mx-12 relative">
+    <div className="bg-[#e7eeff] h-[72px] text-black flex items-center px-12 py-6 gap-2 rounded-[24px] my-6  relative">
       <img className="vecIcon mr-2 w-12" src={LowerSidebarVector} alt="loading" />
       <p className="text-[1.2555rem] font-medium">
         Ask me a question or ask me to summarize a document for you! While like

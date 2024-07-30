@@ -13,6 +13,8 @@
 }
 
 html {
+    margin: 0;
+    padding: 0;
     font-size: 62.5%;
 }
 
@@ -202,7 +204,7 @@ body {
     flex-direction: column;
     margin-top: 1rem;
     background: #f4f6fc;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 0rem;
 }
 
 .main-inner {
@@ -334,7 +336,8 @@ body {
 }
 
 .input-field {
-    width: 105%;
+    width: 100%;
+    min-width: 10%;
     border-radius: 48px;
     display: flex;
     align-items: center;

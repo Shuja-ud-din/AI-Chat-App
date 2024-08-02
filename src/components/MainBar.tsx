@@ -22,9 +22,8 @@ const MainBar = () => {
           <div
             className="content-box"
             style={{
-              backgroundImage: `url(${
-                activeTab === "aramco_knowledge" ? acromoBanner : worldBanner
-              })`,
+              backgroundImage: `url(${activeTab === "aramco_knowledge" ? acromoBanner : worldBanner
+                })`,
             }}
           >
             <div className="main-top-upper">
@@ -51,8 +50,8 @@ const MainBar = () => {
             </div>
           </div>
         )}
-        <div className="main-btns">
-          <div style={{ display: "flex" }}>
+        <div className="main-btns flex justify-between  flex-wrap">
+          <div style={{ display: "flex" }} className="xl:w-[50%] lg:w-[50%] md:w-full">
             {tabs.map(({ label, value }, index) => (
               <>
                 <button
@@ -66,11 +65,11 @@ const MainBar = () => {
             ))}
           </div>
           {!conditional2 && (
-            <div className="staticIcons">
-              <button className="mid-btn">
+            <div className="staticIcons xl:w-[50%] lg:w-[50%] md:w-full">
+              <button className="mid-btn ">
                 <img src={settingsIcon} />
               </button>
-              <button className="mid-btn">
+              <button className="mid-btn ">
                 <img src={logoutIcon} />
               </button>
             </div>

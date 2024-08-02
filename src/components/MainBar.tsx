@@ -39,7 +39,7 @@ const MainBar = () => {
             </div>
             <div className="icon-box">
               <button className="mid-btn">
-                <img src={refreshIcon} />
+                <img src={refreshIcon} onClick={() => window.location.reload()} />
               </button>
               <button className="mid-btn">
                 <img src={settingsIcon} />

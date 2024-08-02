@@ -242,10 +242,12 @@ body {
 }
 
 .main-btns {
-    height: 88px;
+    /* height: 88px; */
+    padding: 2rem;
     border-radius: 0 0 40px 40px;
     border-top: 1px solid rgba(232, 230, 230, 0.692);
     background: #fdfdfd;
+    margin-bottom: 1rem;
     padding-left: 3rem;
     display: flex;
     align-items: center;

@@ -50,31 +50,31 @@ const MainBar = () => {
             </div>
           </div>
         )}
-        <div className="main-btns flex justify-between  flex-wrap">
-          <div style={{ display: "flex" }} className="xl:w-[50%] lg:w-[50%] md:w-full">
+        <div className="main-btns h-auto flex flex-wrap xl:flex-nowrap lg:flex-nowrap justify-between">
+          <div className="flex flex-col md:flex-row w-full lg:w-[50%] mb-4 lg:mb-0">
             {tabs.map(({ label, value }, index) => (
-              <>
-                <button
-                  onClick={() => setActiveTab(value)}
-                  className={`${activeTab === value && "active-btn"}`}
-                >
-                  <img src={index === 0 ? AramcoIcon : WorldIcon} alt="" />
-                  {label}
-                </button>
-              </>
+              <button
+                key={index}
+                onClick={() => setActiveTab(value)}
+                className={`flex items-center w-full md:w-auto mb-2 md:mb-0 ${activeTab === value && "active-btn"}`}
+              >
+                <img src={index === 0 ? AramcoIcon : WorldIcon} alt="" className="mr-2" />
+                {label}
+              </button>
             ))}
           </div>
           {!conditional2 && (
-            <div className="staticIcons xl:w-[50%] lg:w-[50%] md:w-full">
-              <button className="mid-btn ">
-                <img src={settingsIcon} />
+            <div className="staticIcons flex  md:flex-row w-full lg:w-[50%] lg:flex-nowrap">
+              <button className="mid-btn  md:w-auto mb-2 md:mb-0">
+                <img src={settingsIcon} alt="Settings" />
               </button>
-              <button className="mid-btn ">
-                <img src={logoutIcon} />
+              <button className="mid-btn md:w-auto">
+                <img src={logoutIcon} alt="Logout" />
               </button>
             </div>
           )}
         </div>
+
       </div>
     </div>
   );

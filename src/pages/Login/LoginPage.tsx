@@ -57,19 +57,20 @@ const LoginPage = () => {
     });
   };
   console.log(data.email, data.password);
-  const handleLogin = async () => {
+  const handleLogin = () => {
     const payload = {
       email: data.email,
       password: data.password,
     }
     try {
-      const response = await mutate(payload)
-      console.log("Login response:", response);
-      navigate("/app")
+      mutate(payload)
+
     } catch (e) {
       console.error(e)
-      navigate("/app")
     }
+  }
+  if (isSuccess) {
+    navigate("/app")
   }
   return (
     <>

@@ -28,7 +28,8 @@ const tabs = [
 ];
 
 const LoginPage = () => {
-  const { mutate, isError, isSuccess } = useLogin()
+  const { mutateAsync, isError, isSuccess, status } = useLogin()
+  const [error, setError] = useState("")
   const [opacity, setOpacity] = useState(1);
   const [opacity1, setOpacity1] = useState(1);
   const [isPassowrd, setIsPassword] = useState(true);
@@ -57,21 +58,22 @@ const LoginPage = () => {
     });
   };
   console.log(data.email, data.password);
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const payload = {
       email: data.email,
       password: data.password,
-    }
+    };
     try {
-      mutate(payload)
+      const response = await mutateAsync(payload);
+      console.log("my response", response);
 
+      console.log("required response", response);
     } catch (e) {
-      console.error(e)
+      console.error(e);
+      setError(e.response?.data?.message);
     }
-  }
-  if (isSuccess) {
-    navigate("/app")
-  }
+  };
+
   return (
     <>
       <div className="main-container">
@@ -191,6 +193,9 @@ const LoginPage = () => {
                   </span>
                 </div>
               </div>
+              {error && (
+                <div className="text-[red] mt-[2rem]">{error}</div>
+              )}
               <div className="button_box">
                 <button className="login-button" onClick={handleLogin} type="submit">
                   Login

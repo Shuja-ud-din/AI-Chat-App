@@ -27,6 +27,8 @@ body {
   display: flex;
   height: 100vh;
   position: fixed;
+  top: 0;
+  left: 0;
   overflow-y: auto;
   overflow-x: hidden;
   justify-content: space-between;
@@ -233,7 +235,7 @@ body {
 
 .collapse-btn {
   width: 48px;
-  padding-left: 10px;
+  padding: 0;
 }
 
 .flex-box {
@@ -299,7 +301,8 @@ body {
   height: 50px;
   width: 50px;
   margin-top: 2rem;
-  padding-left: 1.3rem;
+  padding: 0;
+  justify-content: center !important;
 }
 
 /* ─── Main Content Area ────────────────────────────────────────────────────── */
@@ -316,6 +319,22 @@ body {
   border-radius: 40px 40px 0 0;
   display: flex;
   flex-direction: column;
+}
+
+/* Chat page — sticky, no gap, fully rounded card */
+.main-top.is-chat {
+  margin-top: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f4f6fc;
+}
+
+.main-top.is-chat .main-btns {
+  border-top: none;
+  margin-bottom: 0;
+  border-radius: 0 0 40px 40px;
 }
 
 .content-box {
@@ -367,18 +386,18 @@ body {
 }
 
 .main-btns {
-  padding: 2rem;
+  padding: 1.4rem 2rem 1.4rem 3rem;
   border-radius: 0 0 40px 40px;
   border-top: 1px solid rgba(232, 230, 230, 0.692);
   background: #fdfdfd;
   margin-bottom: 1rem;
-  padding-left: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
   transition: all 1s;
 }
+
 
 .main-btns button {
   border: none;
@@ -427,10 +446,10 @@ body {
 }
 
 .staticIcons .mid-btn {
-  height: 3rem;
-  width: 3rem;
-  padding: 1rem;
-  margin: 0 2rem;
+  height: 4rem;
+  width: 4rem;
+  padding: 0;
+  margin: 0 0.6rem;
   background: #f2f2f2;
 }
 
@@ -480,6 +499,8 @@ body {
 
 .response-container {
   display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
   padding: 2.2rem 3rem;
 }
 
@@ -584,6 +605,7 @@ body {
   justify-content: center;
   flex-direction: column;
   background: #fdfdfd;
+  overflow: hidden;
 }
 
 .second-container {
@@ -650,7 +672,7 @@ body {
   border-radius: 2rem;
   position: absolute;
   transition: 1s;
-  width: 460px;
+  width: calc(100% - 18rem);
 }
 
 .content_box .main-btns {
@@ -688,7 +710,7 @@ body {
   z-index: 1;
   padding: 2rem;
   bottom: -50px;
-  right: -200px;
+  right: -30px;
 }
 
 .nano-box img {
@@ -790,10 +812,12 @@ body {
   height: 100%;
   padding-left: 10px;
   width: 20rem;
+  max-width: 100%;
   background: none;
   border: none;
   outline: none;
   font-size: 1.4rem;
+  flex: 1;
 }
 
 .login-button {
@@ -854,5 +878,407 @@ body {
   }
   100% {
     opacity: 0;
+  }
+}
+
+/* ─── Login Page Responsive ─────────────────────────────────────────────────── */
+
+/* Large tablet: 1025px – 1280px */
+@media (max-width: 1280px) {
+  .first-container {
+    padding: 0 6rem;
+  }
+
+  .nano-box {
+    right: -30px;
+  }
+}
+
+/* Tablet: 768px – 1024px */
+@media (max-width: 1024px) {
+  .first-container {
+    padding: 0 4rem;
+  }
+
+  .main-top-upper h2 {
+    font-size: 3rem;
+  }
+
+  .nano-box {
+    display: none;
+  }
+
+  .content_box {
+    width: 80%;
+  }
+
+  .thirdBox .img3 {
+    left: 30rem;
+  }
+}
+
+/* Hide mobile branding on desktop/tablet */
+.mobile-branding {
+  display: none !important;
+}
+
+/* Mobile: ≤ 767px — right panel full screen */
+@media (max-width: 767px) {
+  .main-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Hide left panel entirely */
+  .first-container {
+    display: none;
+  }
+
+  /* Right panel fills the full screen */
+  .second-container {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 4rem 3rem;
+  }
+
+  /* Show branding on mobile */
+  .mobile-branding {
+    display: block !important;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-branding img {
+    display: block;
+  }
+
+  .mobile-branding .metaBetabox {
+    margin-top: 1rem;
+  }
+
+  .mobile-branding .poweredPara {
+    font-size: 1.6rem;
+    margin-top: 0.8rem;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+  }
+
+  .form-container h2 {
+    font-size: 2rem;
+  }
+
+  .input-outer input {
+    width: 100% !important;
+  }
+
+  .first-input {
+    margin-top: 1.5rem;
+  }
+
+  .button_box {
+    margin-top: 2.5rem;
+  }
+}
+
+/* Small mobile: ≤ 480px */
+@media (max-width: 480px) {
+  .second-container {
+    padding: 3rem 2rem;
+    gap: 2rem;
+  }
+
+  .form-container {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+  }
+}
+
+/* ─── App Shell: New Utility Classes ────────────────────────────────────────── */
+
+/* Input bar wrapper */
+.input-bar-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 34rem;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem 2rem;
+  background: linear-gradient(to top, #f4f6fc 60%, transparent);
+  pointer-events: none;
+}
+
+/* Quick actions grid */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  width: 100%;
+  margin: 1.6rem 0;
+}
+
+/* Scroll to bottom button */
+.scroll-to-bottom-btn {
+  position: fixed;
+  bottom: 12rem;
+  right: 4rem;
+  z-index: 100;
+}
+
+
+
+/* Mobile sidebar backdrop */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  backdrop-filter: blur(2px);
+}
+
+.sidebar-backdrop.active {
+  display: block;
+}
+
+/* ─── App Shell: Tablet (768px – 1023px) ────────────────────────────────────── */
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  /* Mini sidebar — mirrors .short-sidebar behaviour */
+  .sidebar {
+    width: 100px;
+    overflow: hidden;
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Same as .short-sidebar: take hidden items out of flow */
+  .sidebar .lower-side,
+  .sidebar .recent-chats,
+  .sidebar .tagline,
+  .sidebar .version,
+  .sidebar .newChat-text,
+  .sidebar .brand {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    transition: opacity 0.3s;
+  }
+
+  .sidebar .lower-side { bottom: 0; }
+
+  .sidebar .buttonBox {
+    margin-top: 4rem;
+    flex-direction: column-reverse;
+  }
+
+  .sidebar .buttonBox .add-chat-btn {
+    height: 50px;
+    width: 50px;
+    margin-top: 2rem;
+    padding: 0;
+    justify-content: center !important;
+  }
+
+  .sidebar .columnFlex {
+    padding-right: 0;
+  }
+
+  /* Expand as floating overlay — main does NOT shift */
+  .sidebar.mobile-open {
+    width: 32rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Restore all hidden items when expanded */
+  .sidebar.mobile-open .lower-side,
+  .sidebar.mobile-open .recent-chats,
+  .sidebar.mobile-open .tagline,
+  .sidebar.mobile-open .version,
+  .sidebar.mobile-open .newChat-text,
+  .sidebar.mobile-open .brand {
+    opacity: 1;
+    position: static;
+    z-index: auto;
+  }
+
+  .sidebar.mobile-open .buttonBox {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .sidebar.mobile-open .buttonBox .add-chat-btn {
+    width: 75%;
+    margin-top: 0;
+    padding-left: 2rem;
+    justify-content: flex-start !important;
+  }
+
+  .sidebar.mobile-open .columnFlex {
+    padding-right: 5rem;
+  }
+
+  .main { margin-left: 100px !important; }
+  .input-bar-wrapper { left: 100px; }
+  .afterSubmit { left: 100px; }
+  .quick-actions-grid { grid-template-columns: repeat(2, 1fr); }
+  .scroll-to-bottom-btn { right: 2rem; }
+}
+
+/* ─── App Shell: Mobile (< 768px) ───────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Mini sidebar — 72px. Reduce upper-side padding so logo (49px) fits */
+  .sidebar {
+    width: 72px;
+    overflow: hidden;
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .sidebar .upper-side {
+    padding: 1.2rem 0.8rem;
+  }
+
+  /* Same out-of-flow hiding as .short-sidebar */
+  .sidebar .lower-side,
+  .sidebar .recent-chats,
+  .sidebar .tagline,
+  .sidebar .version,
+  .sidebar .newChat-text,
+  .sidebar .brand {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    transition: opacity 0.3s;
+  }
+
+  .sidebar .lower-side { bottom: 0; }
+
+  .sidebar .buttonBox {
+    margin-top: 3rem;
+    flex-direction: column-reverse;
+  }
+
+  .sidebar .buttonBox .add-chat-btn {
+    height: 44px;
+    width: 44px;
+    margin-top: 1.5rem;
+    padding: 0;
+    justify-content: center !important;
+  }
+
+  .sidebar .columnFlex {
+    padding-right: 0;
+  }
+
+  /* Expand as floating overlay */
+  .sidebar.mobile-open {
+    width: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar.mobile-open .upper-side {
+    padding: 2rem;
+  }
+
+  .sidebar.mobile-open .lower-side,
+  .sidebar.mobile-open .recent-chats,
+  .sidebar.mobile-open .tagline,
+  .sidebar.mobile-open .version,
+  .sidebar.mobile-open .newChat-text,
+  .sidebar.mobile-open .brand {
+    opacity: 1;
+    position: static;
+    z-index: auto;
+  }
+
+  .sidebar.mobile-open .buttonBox {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .sidebar.mobile-open .buttonBox .add-chat-btn {
+    width: 75%;
+    margin-top: 0;
+    padding-left: 2rem;
+    justify-content: flex-start !important;
+  }
+
+  .sidebar.mobile-open .columnFlex {
+    padding-right: 5rem;
+  }
+
+  /* Main sits beside the thin sidebar */
+  .main {
+    margin-left: 72px !important;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .bodyCollapse { margin-left: 72px !important; }
+  .input-bar-wrapper { left: 72px; padding: 0 1rem 1.5rem; }
+  .afterSubmit { left: 72px; right: 0; }
+  .scroll-to-bottom-btn { right: 1.5rem; bottom: 10rem; }
+  .quick-actions-grid { grid-template-columns: 1fr; }
+
+  .text-container { margin: 1rem 0.5rem; }
+  .main-mid { margin: 0.8rem 0.5rem; }
+  .response-container { padding: 1.4rem 1rem; }
+
+  .main-btns {
+    padding: 1.2rem 1.2rem;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+  }
+
+  .main-btns button {
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+    padding: 0.5rem;
+    padding-right: 0.8rem;
+  }
+
+  .main-top-upper {
+    width: 90%;
+    margin-left: 1.5rem;
+  }
+
+  .main-top-upper h2 {
+    font-size: 2.6rem;
+  }
+
+  .main-top-upper p {
+    font-size: 1.3rem;
+  }
+
+  .icon-box {
+    top: 2rem;
+    right: 2rem;
+    width: 140px;
+  }
+
+  .lower-side {
+    height: auto;
+    min-height: 20rem;
+    margin: 1.5rem;
+  }
+
+  .chat-interface {
+    padding-bottom: 14rem;
   }
 }

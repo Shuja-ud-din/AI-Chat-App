@@ -2,24 +2,35 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
+import {
+  Plus,
+  PanelLeftClose,
+  PanelLeftOpen,
+  MessageSquare,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+import { staticChats } from "../data/chats";
+import { useAppContext } from "../context/AppData";
+
+const VISIBLE_COUNT = 3;
 
 const Sidebar = () => {
-  const [recentChats, setRecentChats] = useState([
-    { title: "simply dummy text of..." },
-    { title: "make a type specimen..." },
-    { title: "was popularised in the..." },
-    { title: "was popularised in the..." },
-    { title: "was popularised in the..." },
-  ]);
-  const [activeChat, setActiveChat] = useState(0);
-  const [showChats, setShowChats] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const { mobileSidebarOpen, setMobileSidebarOpen } = useAppContext();
+  const [showAll, setShowAll] = useState(false);
   const [collapse, setCollapse] = useState(false);
 
-  const addNewChat = () => {
-    setRecentChats([{ title: "New Chat..." }, ...recentChats]);
-  };
+  const visibleChats = showAll ? staticChats : staticChats.slice(0, VISIBLE_COUNT);
 
   const toggleSidebar = () => {
+    if (window.innerWidth < 1024) {
+      setMobileSidebarOpen(!mobileSidebarOpen);
+      return;
+    }
     setCollapse(!collapse);
     document.getElementById("main")?.classList.toggle("bodyCollapse");
     document.getElementById("toggleItem")?.classList.toggle("short-sidebar");
@@ -27,15 +38,16 @@ const Sidebar = () => {
     document.querySelector(".columnFlex")?.classList.toggle("padd0");
   };
 
-  const toggleShowChats = () => {
-    document.getElementById("showChats")?.classList.toggle("rotate-icon");
-    setShowChats(!showChats);
-  };
-
-  const nChats = recentChats.length;
+  const activeChatId = (() => {
+    const match = pathname.match(/^\/app\/([^/]+)$/);
+    return match ? match[1] : null;
+  })();
 
   return (
-    <div className="sidebar" id="toggleItem">
+    <div
+      className={`sidebar${mobileSidebarOpen ? " mobile-open" : ""}`}
+      id="toggleItem"
+    >
       <div className="upper-side">
         <div className="columnFlex">
           <div className="upper-side-top">
@@ -53,80 +65,97 @@ const Sidebar = () => {
         </div>
 
         <div className="flex-box buttonBox" style={{ width: "100%" }}>
-          <button className="mid-btn add-chat-btn" onClick={addNewChat}>
-            <Image
-              src="/assets/icons/plus-icon.svg"
-              alt="New chat"
-              width={20}
-              height={20}
-              className="add-btn"
-            />
+          <button
+            className="mid-btn add-chat-btn"
+            onClick={() => {
+              router.push("/app");
+              setMobileSidebarOpen(false);
+            }}
+            style={{ gap: "0.8rem" }}
+            title="New Chat"
+          >
+            <Plus size={25} />
             <p className="newChat-text">New Chat</p>
           </button>
           <button className="mid-btn collapse-btn" onClick={toggleSidebar}>
-            <Image
-              src={
-                collapse
-                  ? "/assets/icons/Side menu.svg"
-                  : "/assets/icons/collapse-menu.svg"
-              }
-              alt="Toggle sidebar"
-              width={20}
-              height={20}
-              className="add-btn"
-            />
+            {collapse ? (
+              <PanelLeftOpen size={20} strokeWidth={2} />
+            ) : (
+              <PanelLeftClose size={20} strokeWidth={2} />
+            )}
           </button>
         </div>
 
         <div className="recent-chats">
           <h2>Recent Chats</h2>
-          <div
-            className="query"
-            id="chats-menu"
-            style={{ height: showChats ? `${6 * nChats}rem` : "18rem" }}
-          >
-            {recentChats.map((chat, index) => (
-              <div
-                key={index}
-                className={`chat-title ${index === activeChat ? "active-chat" : ""}`}
-                onClick={() => setActiveChat(index)}
-              >
-                <button className="chatIcon">
-                  <Image
-                    src="/assets/icons/msg-icon.svg"
-                    alt=""
-                    width={16}
-                    height={16}
-                  />
-                </button>
-                <p>{chat.title}</p>
-                <button className="chatIcon deleteChat">
-                  <Image
-                    src="/assets/icons/msg-icon.svg"
-                    alt=""
-                    width={16}
-                    height={16}
-                  />
-                </button>
-              </div>
-            ))}
+          <div className="query" style={{ height: "auto", overflow: "visible", gap: "0.2rem" }}>
+            {visibleChats.map((chat) => {
+              const isActive = activeChatId === chat.id;
+              return (
+                <Link
+                  key={chat.id}
+                  href={`/app/${chat.id}`}
+                  className="chat-title"
+                  onClick={() => setMobileSidebarOpen(false)}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    backgroundColor: isActive ? "#e8ecfc" : "transparent",
+                    alignItems: "flex-start",
+                    padding: "0.8rem",
+                    gap: "0.8rem",
+                  }}
+                >
+                  <button
+                    className="chatIcon"
+                    style={{
+                      flexShrink: 0,
+                      marginTop: "0.2rem",
+                      background: isActive ? "#e0dff8" : "#f2f2f2",
+                    }}
+                  >
+                    <MessageSquare size={15} strokeWidth={2} color={isActive ? "#6e6cc8" : "#888"} />
+                  </button>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{
+                      fontSize: "1.35rem",
+                      fontWeight: isActive ? 600 : 400,
+                      color: isActive ? "#3d3baa" : "#1d1d1f",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      lineHeight: 1.4,
+                      marginLeft: 0,
+                    }}>
+                      {chat.title}
+                    </p>
+                    <p style={{
+                      fontSize: "1.15rem",
+                      color: "#b0b0b8",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      marginTop: "0.3rem",
+                      marginLeft: 0,
+                      lineHeight: 1.3,
+                      fontWeight: 400,
+                    }}>
+                      {chat.preview}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
-          <div className="show-more" onClick={toggleShowChats}>
-            <button
-              className="chatIcon"
-              id="showChats"
-              style={{ height: "31px" }}
-            >
-              <Image
-                src="/assets/icons/show-more.svg"
-                alt=""
-                width={16}
-                height={16}
-              />
-            </button>
-            <p>Show {showChats ? "less" : "more"}</p>
-          </div>
+          {staticChats.length > VISIBLE_COUNT && (
+            <div className="show-more" onClick={() => setShowAll((v) => !v)} style={{ cursor: "pointer" }}>
+              <button className="chatIcon" style={{ height: "31px" }}>
+                {showAll ? <ChevronUp size={16} strokeWidth={2} /> : <ChevronDown size={16} strokeWidth={2} />}
+              </button>
+              <p>Show {showAll ? "less" : "more"}</p>
+            </div>
+          )}
         </div>
       </div>
 

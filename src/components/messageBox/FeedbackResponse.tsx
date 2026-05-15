@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { X } from "lucide-react";
 import type { Feedback } from "../../context/AppData";
 
 const FeedbackResponse = ({
@@ -31,13 +31,9 @@ const FeedbackResponse = ({
           </div>
         </>
       )}
-      <Image
-        src="/assets/icons/cross-main.svg"
-        alt="Close"
-        width={16}
-        height={16}
-        className="crossIcon absolute top-[1.5rem] right-[1.5rem] cursor-pointer"
-      />
+      <button className="crossIcon absolute top-[1.5rem] right-[1.5rem] cursor-pointer bg-transparent border-none p-1 hover:opacity-70">
+        <X size={16} strokeWidth={2.5} color="#6e6e73" />
+      </button>
     </div>
   );
 };

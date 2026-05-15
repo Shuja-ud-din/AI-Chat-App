@@ -8,25 +8,23 @@ import {
 import Banner from "../../components/Banner";
 import ChatQuickActions from "../../components/ChatQuickActions";
 import InputBar from "../../components/InputBar";
-import Chat from "../../components/messageBox/Chat";
 
 const quickActionsMap: Record<string, { title: string; description: string }[]> = {
   world_knowledge: worldKnowledgeQuickActions,
   aramco_knowledge: aramcoKnowledgeQuickActions,
 };
 
-export default function ChatPage() {
-  const { activeTab, conditional2 } = useAppContext();
+export default function WelcomePage() {
+  const { activeTab } = useAppContext();
 
   return (
     <div className="chat-interface">
-      {conditional2 && (
-        <>
-          <Banner />
-          <ChatQuickActions quickActions={quickActionsMap[activeTab] ?? aramcoKnowledgeQuickActions} />
-        </>
-      )}
-      <Chat />
+      <Banner />
+      <ChatQuickActions
+        quickActions={
+          quickActionsMap[activeTab] ?? aramcoKnowledgeQuickActions
+        }
+      />
       <InputBar />
     </div>
   );

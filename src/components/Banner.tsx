@@ -1,35 +1,98 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { Sparkles, X } from "lucide-react";
 
 const Banner = () => {
-  const [showBanner, setShowBanner] = useState(true);
+  const [visible, setVisible] = useState(true);
 
-  if (!showBanner) return null;
+  if (!visible) return null;
 
   return (
-    <div className="bg-[#e7eeff] text-black flex items-center px-12 py-6 gap-2 rounded-[24px] my-6 relative">
-      <Image
-        src="/assets/images/Lower-Sidebar-Vector.png"
-        alt=""
-        width={48}
-        height={48}
-        className="mr-2 w-12"
-      />
-      <p className="lg:text-[1rem] xl:text-[1.2555rem] sm:text-[1.2555rem] font-medium w-[90%]">
-        Ask me a question or ask me to summarize a document for you! While like
-        humans, I&apos;m not perfect and have my limitations, your feedback is
-        the key to my improvement.
-      </p>
-      <Image
-        src="/assets/icons/cross-main.svg"
-        alt="Close"
-        width={20}
-        height={20}
-        onClick={() => setShowBanner(false)}
-        className="absolute top-8 right-8 cursor-pointer w-[3%] min-w-[20px]"
-      />
+    <div
+      style={{
+        background: "linear-gradient(135deg, #f7f6ff 0%, #f0fdfb 100%)",
+        border: "1px solid #e8e6f8",
+        borderRadius: "1.6rem",
+        padding: "1.4rem 1.8rem",
+        display: "flex",
+        alignItems: "center",
+        gap: "1.4rem",
+      }}
+    >
+      {/* Icon */}
+      <div
+        style={{
+          flexShrink: 0,
+          width: "3.8rem",
+          height: "3.8rem",
+          borderRadius: "1rem",
+          background: "linear-gradient(135deg, #6e6cc8 0%, #7bd8c3 100%)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 2px 8px rgba(110,108,200,0.25)",
+        }}
+      >
+        <Sparkles size={16} color="#fff" strokeWidth={2} />
+      </div>
+
+      {/* Text */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p
+          style={{
+            fontSize: "1.35rem",
+            lineHeight: "1.65",
+            color: "#5a5880",
+            fontWeight: 400,
+            margin: 0,
+          }}
+        >
+          Ask me anything —{" "}
+          <span style={{ color: "#1d1d1f", fontWeight: 500 }}>
+            document summaries, OKR insights, or knowledge search.
+          </span>{" "}
+          <span
+            style={{
+              background: "linear-gradient(90deg, #6e6cc8, #7bd8c3)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              fontWeight: 600,
+            }}
+          >
+            Your feedback makes me smarter.
+          </span>
+        </p>
+      </div>
+
+      {/* Dismiss */}
+      <button
+        onClick={() => setVisible(false)}
+        style={{
+          flexShrink: 0,
+          width: "2.8rem",
+          height: "2.8rem",
+          borderRadius: "0.8rem",
+          border: "none",
+          background: "transparent",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          color: "#aaa",
+          transition: "background 0.15s",
+        }}
+        onMouseEnter={(e) =>
+          ((e.currentTarget as HTMLButtonElement).style.background = "#eeedf8")
+        }
+        onMouseLeave={(e) =>
+          ((e.currentTarget as HTMLButtonElement).style.background =
+            "transparent")
+        }
+      >
+        <X size={14} strokeWidth={2.5} />
+      </button>
     </div>
   );
 };

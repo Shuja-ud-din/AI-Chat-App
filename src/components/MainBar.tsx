@@ -1,13 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import { RefreshCw, Settings, LogOut } from "lucide-react";
 import { useAppContext } from "../context/AppData";
 import { tabs } from "../utils/chatTabs";
 
 const MainBar = () => {
   const router = useRouter();
-  const { activeTab, setActiveTab, conditional2 } = useAppContext();
+  const pathname = usePathname();
+  const { activeTab, setActiveTab } = useAppContext();
+
+  const isWelcome = pathname === "/app";
 
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -15,9 +19,9 @@ const MainBar = () => {
   };
 
   return (
-    <div className="main-top">
+    <div className={`main-top${!isWelcome ? " is-chat" : ""}`}>
       <div className="main-inner">
-        {conditional2 && (
+        {isWelcome && (
           <div
             className="content-box"
             style={{
@@ -46,32 +50,14 @@ const MainBar = () => {
               </p>
             </div>
             <div className="icon-box">
-              <button
-                className="mid-btn"
-                onClick={() => window.location.reload()}
-              >
-                <Image
-                  src="/assets/icons/refresh.svg"
-                  alt="Refresh"
-                  width={20}
-                  height={20}
-                />
+              <button className="mid-btn" onClick={() => window.location.reload()}>
+                <RefreshCw size={18} strokeWidth={2} />
               </button>
               <button className="mid-btn">
-                <Image
-                  src="/assets/icons/settings.svg"
-                  alt="Settings"
-                  width={20}
-                  height={20}
-                />
+                <Settings size={18} strokeWidth={2} />
               </button>
               <button className="mid-btn" onClick={handleLogout}>
-                <Image
-                  src="/assets/icons/logout.svg"
-                  alt="Logout"
-                  width={20}
-                  height={20}
-                />
+                <LogOut size={18} strokeWidth={2} />
               </button>
             </div>
           </div>
@@ -103,26 +89,6 @@ const MainBar = () => {
             ))}
           </div>
 
-          {!conditional2 && (
-            <div className="staticIcons flex md:flex-row w-full lg:w-[50%] lg:flex-nowrap">
-              <button className="mid-btn md:w-auto mb-2 md:mb-0">
-                <Image
-                  src="/assets/icons/settings.svg"
-                  alt="Settings"
-                  width={20}
-                  height={20}
-                />
-              </button>
-              <button className="mid-btn md:w-auto" onClick={handleLogout}>
-                <Image
-                  src="/assets/icons/logout.svg"
-                  alt="Logout"
-                  width={20}
-                  height={20}
-                />
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>

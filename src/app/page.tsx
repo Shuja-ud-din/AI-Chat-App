@@ -15,8 +15,8 @@ export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [opacity, setOpacity] = useState(1);
-  const [opacity1, setOpacity1] = useState(1);
+  const [opacity, setOpacity] = useState(0);
+  const [opacity1, setOpacity1] = useState(0);
 
   useEffect(() => {
     const t1 = setInterval(() => setOpacity((v) => (v === 0 ? 1 : 0)), 4000);
@@ -121,12 +121,14 @@ export default function LoginPage() {
                 src="/assets/images/circlePattern.png"
                 alt=""
                 fill
+                sizes="50vw"
                 style={{ opacity, objectFit: "contain", transition: "1s" }}
               />
               <Image
                 src="/assets/images/singleSphere.png"
                 alt=""
                 fill
+                sizes="50vw"
                 style={{
                   opacity: (opacity - 1) * -1,
                   objectFit: "contain",
@@ -141,6 +143,7 @@ export default function LoginPage() {
                 alt=""
                 width={50}
                 height={40}
+                style={{ width: "50px", height: "auto" }}
               />
               <p>
                 Unlock the Power of Knowledge with Our Dual Knowledge Bases!
@@ -156,19 +159,22 @@ export default function LoginPage() {
           >
             <div className="thirdBox">
               <Image
-                src="/assets/images/image1.png"
+                src="/assets/images/image1.svg"
                 alt=""
                 width={450}
                 height={532}
                 className="img1"
+                loading="eager"
+                unoptimized
                 style={{ width: "450px", height: "auto" }}
               />
               <Image
-                src="/assets/images/image2.png"
+                src="/assets/images/image2.svg"
                 alt=""
                 width={472}
                 height={165}
                 className="img2"
+                unoptimized
                 style={{ width: "460px", height: "auto" }}
               />
               <Image
@@ -180,11 +186,12 @@ export default function LoginPage() {
                 style={{ width: "108px", height: "auto" }}
               />
               <Image
-                src="/assets/images/image4.png"
+                src="/assets/images/image4.svg"
                 alt=""
                 width={710}
                 height={161}
                 className="img4"
+                unoptimized
                 style={{ width: "710px", height: "auto" }}
               />
             </div>
@@ -202,6 +209,28 @@ export default function LoginPage() {
 
       {/* ── Right Panel (Form) ─────────────────────────────────────── */}
       <div className="second-container">
+        {/* Branding shown only on mobile */}
+        <div className="mobile-branding">
+          <Image
+            src="/assets/images/logo.png"
+            alt="Aramco Logo"
+            width={60}
+            height={58}
+            style={{ height: "60px", width: "auto" }}
+          />
+          <div className="metaBetabox">
+            <Image
+              src="/assets/images/mataBrain.png"
+              alt="MetaBrain"
+              width={217}
+              height={35}
+              style={{ height: "35px", width: "auto" }}
+            />
+            <button className="beta-button">Beta</button>
+          </div>
+          <p className="poweredPara">Powered by Aramco.AI</p>
+        </div>
+
         <div className="form-container">
           <form onSubmit={handleLogin}>
             <div>
@@ -234,19 +263,28 @@ export default function LoginPage() {
                   onChange={handleChange}
                   placeholder="••••••••"
                   autoComplete="current-password"
-                  style={{ width: "27rem" }}
                 />
                 <button
                   type="button"
                   onClick={() => setIsPasswordVisible((v) => !v)}
-                  style={{ background: "none", border: "none", cursor: "pointer", padding: "0 8px", display: "flex", alignItems: "center" }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "0 8px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <Image
                     src="/assets/images/blockEye.png"
                     alt="toggle password"
                     width={20}
                     height={20}
-                    style={{ opacity: isPasswordVisible ? 0.4 : 1, pointerEvents: "none" }}
+                    style={{
+                      opacity: isPasswordVisible ? 0.4 : 1,
+                      pointerEvents: "none",
+                    }}
                   />
                 </button>
               </div>
@@ -265,7 +303,6 @@ export default function LoginPage() {
                 {isLoading ? "Logging in…" : "Login"}
               </button>
             </div>
-
           </form>
         </div>
       </div>

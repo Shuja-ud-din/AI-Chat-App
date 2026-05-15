@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ThumbsUp, ThumbsDown, Copy } from "lucide-react";
 import { useAppContext, type Feedback } from "../../context/AppData";
+import MarkdownRenderer from "../MarkdownRenderer";
 
 const goodFeedback: Feedback = {
-  response:
-    "We're happy to hear that, what made the response good? (optional)",
+  response: "We're happy to hear that, what made the response good? (optional)",
   buttons: ["Correct answer", "Response is helpful", "Easy to grasp"],
 };
 
 const badFeedback: Feedback = {
-  response:
-    "Sorry to hear that, what was the issue with this response? (optional)",
+  response: "Sorry to hear that, what was the issue with this response? (optional)",
   buttons: ["Incorrect answer", "Response isn't helpful", "Offensive / Harmful"],
 };
 
@@ -55,45 +55,30 @@ const MessageBox = ({ answerIndex }: { answerIndex: number }) => {
         style={{ borderRadius: "50px" }}
       />
       {conditional && (
-        <p id={`response${answerIndex + 1}`} className="text-[1.3rem] leading-relaxed">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid ut
-          ullam iusto aspernatur quibusdam eaque aliquam ratione ad architecto
-          dolores non illo facilis error velit culpa, iste magni quae quas!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sed
-          incidunt omnis dolores harum est magni ipsam ipsa laboriosam.
-        </p>
+        <div id={`response${answerIndex + 1}`} style={{ flex: 1, minWidth: 0 }}>
+          <MarkdownRenderer content={`Based on your query, here is the information retrieved from the **Aramco Knowledge Base**:
+
+> The requested data has been processed and summarized below.
+
+- Aramco Knowledge Base is up to date as of **Q4 2024**
+- Results are filtered based on your **access permissions**
+- For detailed reports, contact your **Knowledge Manager**`} />
+        </div>
       )}
       {conditional && (
         <div className="response-icons">
           <button onClick={likeAnswer} title="Like">
-            <Image
-              src="/assets/icons/like.svg"
-              alt="Like"
-              width={20}
-              height={20}
-            />
+            <ThumbsUp size={18} strokeWidth={2} />
           </button>
           <button onClick={dislikeAnswer} title="Dislike">
-            <Image
-              src="/assets/icons/dislike.svg"
-              alt="Dislike"
-              width={20}
-              height={20}
-            />
+            <ThumbsDown size={18} strokeWidth={2} />
           </button>
           <button onClick={copyText} title="Copy">
-            <Image
-              src="/assets/icons/icon _file copy_.svg"
-              alt="Copy"
-              width={20}
-              height={20}
-            />
+            <Copy size={18} strokeWidth={2} />
           </button>
         </div>
       )}
-      {toastVisible && (
-        <div className="snack-toast">Text Copied</div>
-      )}
+      {toastVisible && <div className="snack-toast">Text Copied</div>}
     </div>
   );
 };

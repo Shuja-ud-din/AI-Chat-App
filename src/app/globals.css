@@ -1,0 +1,1284 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: #1d1d1f;
+  background: #f4f6fc;
+}
+
+/* ─── App Shell ────────────────────────────────────────────────────────────── */
+
+.sidebar {
+  width: 34rem;
+  border-right: 1px solid #fdfdfd;
+  display: flex;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  justify-content: space-between;
+  flex-direction: column;
+  transition: all 1s;
+  background: #fff;
+  z-index: 10;
+}
+
+.short-sidebar {
+  width: 100px;
+  overflow: hidden;
+}
+
+.main {
+  flex: 9;
+  padding: 3rem;
+  margin-left: 340px;
+  padding-top: 0;
+  position: relative;
+  transition: all 1s;
+  background: #f4f6fc;
+  min-height: 100vh;
+}
+
+.bodyCollapse {
+  margin-left: 100px !important;
+}
+
+/* ─── Sidebar Internals ────────────────────────────────────────────────────── */
+
+.upper-side {
+  padding: 2rem;
+  height: fit-content;
+}
+
+.upper-side-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.logo {
+  height: 4rem;
+  width: 4.9rem;
+  cursor: pointer;
+}
+
+.brand {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 1.7rem;
+  font-weight: 100;
+  color: gray;
+  margin-top: 0.4rem;
+  margin-bottom: 2.5rem;
+  margin-left: -2rem;
+  padding-left: 0.8rem;
+}
+
+.version {
+  font-size: 1.2rem;
+  border: 1px solid;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+.lower-side {
+  background: #f4f6fc;
+  border-radius: 32px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 361px;
+  margin: 3rem;
+  padding: 1rem;
+}
+
+.lower-side h2 {
+  background: linear-gradient(180.27deg, #220070 18.2%, #6e6cc8 106.65%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 1rem 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.lower-side img {
+  width: 95%;
+}
+
+.recent-chats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 1.3rem;
+}
+
+.recent-chats h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.query {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  outline: none;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  overflow: hidden;
+  width: 95%;
+  transition: 0.5s ease;
+}
+
+.chat-title,
+.show-more {
+  padding: 0.6rem;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  margin: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: 0.2s all;
+  position: relative;
+}
+
+.chat-title p,
+.show-more p {
+  margin-left: 1rem;
+  font-size: 1.4rem;
+}
+
+.chat-title:hover {
+  background-color: #f8f4f4;
+}
+
+.active-chat {
+  background-color: #e8ecfc !important;
+}
+
+.deleteChat {
+  visibility: hidden;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+
+.chatIcon {
+  background: #f2f2f2;
+  padding: 0.8rem;
+  border: none;
+  outline: none;
+  border-radius: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.mid-btn {
+  height: 48px;
+  background: #f2f2f2;
+  border: none;
+  outline: none;
+  border-radius: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: auto;
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+}
+
+.mid-btn:hover {
+  background-color: #dddada;
+}
+
+.add-btn {
+  padding-right: 1rem;
+}
+
+.add-chat-btn {
+  width: 75%;
+  justify-content: flex-start !important;
+  padding-left: 2rem;
+}
+
+.collapse-btn {
+  width: 48px;
+  padding: 0;
+}
+
+.flex-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonBox {
+  transition: all 1s;
+}
+
+.columnFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-right: 5rem;
+}
+
+.padd0 {
+  padding: 0 !important;
+}
+
+.rotate-icon {
+  transform: rotate(180deg);
+}
+
+/* ─── Sidebar Collapsed State ──────────────────────────────────────────────── */
+
+.lower-side,
+.recent-chats,
+.tagline,
+.version,
+.newChat-text,
+.brand {
+  transition: all 1s;
+  transition-delay: 0.5s;
+}
+
+.short-sidebar .lower-side,
+.short-sidebar .recent-chats,
+.short-sidebar .tagline,
+.short-sidebar .version,
+.short-sidebar .newChat-text,
+.short-sidebar .brand {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  transition: 0.5s !important;
+}
+
+.short-sidebar .lower-side {
+  bottom: 0;
+}
+
+.short-sidebar .buttonBox {
+  margin-top: 4rem;
+  flex-direction: column-reverse;
+}
+
+.short-sidebar .buttonBox .add-chat-btn {
+  height: 50px;
+  width: 50px;
+  margin-top: 2rem;
+  padding: 0;
+  justify-content: center !important;
+}
+
+/* ─── Main Content Area ────────────────────────────────────────────────────── */
+
+.main-top {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  background: #f4f6fc;
+  padding: 1.5rem 0;
+}
+
+.main-inner {
+  border-radius: 40px 40px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat page — sticky, no gap, fully rounded card */
+.main-top.is-chat {
+  margin-top: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f4f6fc;
+}
+
+.main-top.is-chat .main-btns {
+  border-top: none;
+  margin-bottom: 0;
+  border-radius: 0 0 40px 40px;
+}
+
+.content-box {
+  width: 100%;
+  border-radius: 40px 40px 0 0;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
+}
+
+.main-top-upper {
+  margin-top: 3rem;
+  margin-left: 3rem;
+  width: 60%;
+}
+
+.main-top-upper h2 {
+  color: #1d1d1f;
+  font-size: 4rem;
+}
+
+.main-top-upper p {
+  font-size: 1.5rem;
+  color: #6e6e73;
+  font-weight: 500;
+  padding-bottom: 3rem;
+}
+
+.main-top-upper span {
+  background-image: linear-gradient(180.27deg, #220070 18.2%, #6e6cc8 106.65%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  top: 4rem;
+  right: 4rem;
+  position: absolute;
+}
+
+.icon-box button {
+  height: 3rem;
+  width: 3rem;
+}
+
+.main-btns {
+  padding: 1.4rem 2rem 1.4rem 3rem;
+  border-radius: 0 0 40px 40px;
+  border-top: 1px solid rgba(232, 230, 230, 0.692);
+  background: #fdfdfd;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all 1s;
+}
+
+
+.main-btns button {
+  border: none;
+  outline: none;
+  border-radius: 56px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-right: 3rem;
+  padding: 0.7rem;
+  padding-right: 1.3rem;
+}
+
+.main-btns button img {
+  width: 28px;
+}
+
+.active-btn {
+  border: 2px solid #989fd3 !important;
+  font-weight: 500 !important;
+  background-color: #e4e8ff !important;
+}
+
+.first-btn {
+  border: 2px solid #989fd3 !important;
+}
+
+.afterSubmit {
+  position: fixed;
+  top: 0;
+  left: 36.4rem;
+  right: 4.2rem;
+  z-index: 1;
+}
+
+.staticIcons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.staticIcons .mid-btn {
+  height: 4rem;
+  width: 4rem;
+  padding: 0;
+  margin: 0 0.6rem;
+  background: #f2f2f2;
+}
+
+/* ─── Chat Interface ───────────────────────────────────────────────────────── */
+
+.chat-interface {
+  padding-bottom: 10rem;
+}
+
+.margin6 {
+  margin-top: 6rem;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1.5rem 3rem;
+}
+
+.text-container .mid-btn {
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.text-container p {
+  font-size: 1.7rem;
+}
+
+.text-container h3 {
+  height: 50px;
+  width: 50px;
+  font-size: 2rem;
+}
+
+.response-box {
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto !important;
+  padding: 0 !important;
+  border-radius: 40px !important;
+}
+
+.response-box .crossIcon {
+  top: 1.5rem !important;
+}
+
+.response-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 2.2rem 3rem;
+}
+
+.response-container p {
+  padding: 0 1rem;
+}
+
+.response-container img {
+  margin-right: 0.1rem;
+}
+
+.response-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 40px;
+}
+
+.response-icons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 48px;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s all;
+}
+
+.response-icons button:hover {
+  background-color: #6e6cc8;
+}
+
+.response-icons button img {
+  margin: 0;
+  padding: 0;
+  width: 20px;
+}
+
+.feedback-box {
+  width: 100%;
+  background: white;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 !important;
+  padding: 2rem !important;
+  height: auto;
+  border-radius: 0 0 30px 30px;
+}
+
+.feedback-btns {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.outline-btn {
+  background: white;
+  outline: none;
+  border-radius: 8px;
+  border: 2px solid #6e6e73;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-right: 1.5rem;
+  transition: 0.3s all;
+  font-size: 1.3rem;
+}
+
+.outline-btn:hover {
+  border-color: #a9a9df;
+  font-weight: 600;
+  background: #f4f6fc;
+}
+
+.main-mid {
+  background: #fdfdfd;
+  border-radius: 40px;
+  display: flex;
+  margin: 1rem 3rem;
+  padding: 1rem;
+}
+
+/* ─── Login / Signup Pages ─────────────────────────────────────────────────── */
+
+.main-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  font-size: 1.5rem;
+}
+
+.first-container {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  padding: 0 9rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background: #fdfdfd;
+  overflow: hidden;
+}
+
+.second-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/assets/images/Background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  background-color: #e7eeff;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  background: #fff;
+  padding: 4rem 3rem;
+}
+
+.form-container p {
+  margin-top: 0.1rem;
+  font-weight: 400;
+  color: gray;
+  font-size: 14px;
+}
+
+.form-container h2 {
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+.beta-button {
+  color: #1d1d1f;
+  font-style: normal;
+  font-weight: 550;
+  margin-left: 10px;
+  background-color: rgb(252, 251, 254);
+  padding: 4px 10px;
+  font-size: 17px;
+  border-radius: 1.2rem;
+  border: none;
+  cursor: default;
+}
+
+.poweredPara {
+  font-size: 2rem;
+  font-weight: 250;
+  line-height: 39px;
+  text-align: left;
+}
+
+.LeftContent {
+  height: 85vh;
+  width: 100%;
+}
+
+.content_box {
+  background: rgba(231, 238, 255, 1);
+  border-radius: 2rem;
+  position: absolute;
+  transition: 1s;
+  width: calc(100% - 18rem);
+}
+
+.content_box .main-btns {
+  background: none;
+  border: none;
+}
+
+.mainWrldBtn0 {
+  margin-right: 1rem !important;
+  margin-left: 2rem !important;
+}
+
+.bottom_txt {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  padding: 0 9rem;
+}
+
+.bottom_txt p {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 19px;
+  text-align: left;
+  color: #9fa0a6;
+}
+
+.nano-box {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  width: 330px;
+  background: #f4f6fc;
+  border-radius: 2rem;
+  z-index: 1;
+  padding: 2rem;
+  bottom: -50px;
+  right: -30px;
+}
+
+.nano-box img {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nano-box p {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 19px;
+  text-align: left;
+}
+
+.sphereBox {
+  height: 320px;
+  width: 100%;
+  display: flex;
+  transition: 1s;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.thirdBoxContainer {
+  transition: 1s;
+  width: 100%;
+}
+
+.sphereBox img {
+  transition: 1s;
+  height: 100%;
+  position: absolute;
+}
+
+.thirdBox {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 55rem;
+}
+
+.thirdBox .img1 {
+  position: absolute;
+}
+
+.thirdBox .img2 {
+  position: absolute;
+  top: 15rem;
+  left: 4rem;
+}
+
+.thirdBox .img3 {
+  position: absolute;
+  top: 20rem;
+  left: 46rem;
+}
+
+.thirdBox .img4 {
+  position: absolute;
+  top: 33rem;
+  left: 4rem;
+}
+
+.first-input {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.input-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(114, 114, 114);
+  margin-bottom: 5px;
+}
+
+.input-outer {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #dce0e7;
+  background-color: #f5f5f5;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-outer span {
+  color: rgba(124, 127, 132, 1);
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-right: 8px;
+}
+
+.input-outer input {
+  height: 100%;
+  padding-left: 10px;
+  width: 20rem;
+  max-width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  flex: 1;
+}
+
+.login-button {
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  border: 1px solid #6e6cc8;
+  border-radius: 34px;
+  cursor: pointer;
+  background: white;
+  transition: 0.2s all;
+}
+
+.login-button:hover {
+  background: #dce0e7;
+}
+
+.button_box {
+  margin-top: 3.2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.metaBetabox {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Snack / Toast ────────────────────────────────────────────────────────── */
+
+.snack-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #1d1d1f;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  z-index: 9999;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ─── Login Page Responsive ─────────────────────────────────────────────────── */
+
+/* Large tablet: 1025px – 1280px */
+@media (max-width: 1280px) {
+  .first-container {
+    padding: 0 6rem;
+  }
+
+  .nano-box {
+    right: -30px;
+  }
+}
+
+/* Tablet: 768px – 1024px */
+@media (max-width: 1024px) {
+  .first-container {
+    padding: 0 4rem;
+  }
+
+  .main-top-upper h2 {
+    font-size: 3rem;
+  }
+
+  .nano-box {
+    display: none;
+  }
+
+  .content_box {
+    width: 80%;
+  }
+
+  .thirdBox .img3 {
+    left: 30rem;
+  }
+}
+
+/* Hide mobile branding on desktop/tablet */
+.mobile-branding {
+  display: none !important;
+}
+
+/* Mobile: ≤ 767px — right panel full screen */
+@media (max-width: 767px) {
+  .main-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Hide left panel entirely */
+  .first-container {
+    display: none;
+  }
+
+  /* Right panel fills the full screen */
+  .second-container {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 4rem 3rem;
+  }
+
+  /* Show branding on mobile */
+  .mobile-branding {
+    display: block !important;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-branding img {
+    display: block;
+  }
+
+  .mobile-branding .metaBetabox {
+    margin-top: 1rem;
+  }
+
+  .mobile-branding .poweredPara {
+    font-size: 1.6rem;
+    margin-top: 0.8rem;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
+  }
+
+  .form-container h2 {
+    font-size: 2rem;
+  }
+
+  .input-outer input {
+    width: 100% !important;
+  }
+
+  .first-input {
+    margin-top: 1.5rem;
+  }
+
+  .button_box {
+    margin-top: 2.5rem;
+  }
+}
+
+/* Small mobile: ≤ 480px */
+@media (max-width: 480px) {
+  .second-container {
+    padding: 3rem 2rem;
+    gap: 2rem;
+  }
+
+  .form-container {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+  }
+}
+
+/* ─── App Shell: New Utility Classes ────────────────────────────────────────── */
+
+/* Input bar wrapper */
+.input-bar-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 34rem;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem 2rem;
+  background: linear-gradient(to top, #f4f6fc 60%, transparent);
+  pointer-events: none;
+}
+
+/* Quick actions grid */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  width: 100%;
+  margin: 1.6rem 0;
+}
+
+/* Scroll to bottom button */
+.scroll-to-bottom-btn {
+  position: fixed;
+  bottom: 12rem;
+  right: 4rem;
+  z-index: 100;
+}
+
+
+
+/* Mobile sidebar backdrop */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  backdrop-filter: blur(2px);
+}
+
+.sidebar-backdrop.active {
+  display: block;
+}
+
+/* ─── App Shell: Tablet (768px – 1023px) ────────────────────────────────────── */
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  /* Mini sidebar — mirrors .short-sidebar behaviour */
+  .sidebar {
+    width: 100px;
+    overflow: hidden;
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Same as .short-sidebar: take hidden items out of flow */
+  .sidebar .lower-side,
+  .sidebar .recent-chats,
+  .sidebar .tagline,
+  .sidebar .version,
+  .sidebar .newChat-text,
+  .sidebar .brand {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    transition: opacity 0.3s;
+  }
+
+  .sidebar .lower-side { bottom: 0; }
+
+  .sidebar .buttonBox {
+    margin-top: 4rem;
+    flex-direction: column-reverse;
+  }
+
+  .sidebar .buttonBox .add-chat-btn {
+    height: 50px;
+    width: 50px;
+    margin-top: 2rem;
+    padding: 0;
+    justify-content: center !important;
+  }
+
+  .sidebar .columnFlex {
+    padding-right: 0;
+  }
+
+  /* Expand as floating overlay — main does NOT shift */
+  .sidebar.mobile-open {
+    width: 32rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Restore all hidden items when expanded */
+  .sidebar.mobile-open .lower-side,
+  .sidebar.mobile-open .recent-chats,
+  .sidebar.mobile-open .tagline,
+  .sidebar.mobile-open .version,
+  .sidebar.mobile-open .newChat-text,
+  .sidebar.mobile-open .brand {
+    opacity: 1;
+    position: static;
+    z-index: auto;
+  }
+
+  .sidebar.mobile-open .buttonBox {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .sidebar.mobile-open .buttonBox .add-chat-btn {
+    width: 75%;
+    margin-top: 0;
+    padding-left: 2rem;
+    justify-content: flex-start !important;
+  }
+
+  .sidebar.mobile-open .columnFlex {
+    padding-right: 5rem;
+  }
+
+  .main { margin-left: 100px !important; }
+  .input-bar-wrapper { left: 100px; }
+  .afterSubmit { left: 100px; }
+  .quick-actions-grid { grid-template-columns: repeat(2, 1fr); }
+  .scroll-to-bottom-btn { right: 2rem; }
+}
+
+/* ─── App Shell: Mobile (< 768px) ───────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Mini sidebar — 72px. Reduce upper-side padding so logo (49px) fits */
+  .sidebar {
+    width: 72px;
+    overflow: hidden;
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .sidebar .upper-side {
+    padding: 1.2rem 0.8rem;
+  }
+
+  /* Same out-of-flow hiding as .short-sidebar */
+  .sidebar .lower-side,
+  .sidebar .recent-chats,
+  .sidebar .tagline,
+  .sidebar .version,
+  .sidebar .newChat-text,
+  .sidebar .brand {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    transition: opacity 0.3s;
+  }
+
+  .sidebar .lower-side { bottom: 0; }
+
+  .sidebar .buttonBox {
+    margin-top: 3rem;
+    flex-direction: column-reverse;
+  }
+
+  .sidebar .buttonBox .add-chat-btn {
+    height: 44px;
+    width: 44px;
+    margin-top: 1.5rem;
+    padding: 0;
+    justify-content: center !important;
+  }
+
+  .sidebar .columnFlex {
+    padding-right: 0;
+  }
+
+  /* Expand as floating overlay */
+  .sidebar.mobile-open {
+    width: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar.mobile-open .upper-side {
+    padding: 2rem;
+  }
+
+  .sidebar.mobile-open .lower-side,
+  .sidebar.mobile-open .recent-chats,
+  .sidebar.mobile-open .tagline,
+  .sidebar.mobile-open .version,
+  .sidebar.mobile-open .newChat-text,
+  .sidebar.mobile-open .brand {
+    opacity: 1;
+    position: static;
+    z-index: auto;
+  }
+
+  .sidebar.mobile-open .buttonBox {
+    margin-top: 0;
+    flex-direction: row;
+  }
+
+  .sidebar.mobile-open .buttonBox .add-chat-btn {
+    width: 75%;
+    margin-top: 0;
+    padding-left: 2rem;
+    justify-content: flex-start !important;
+  }
+
+  .sidebar.mobile-open .columnFlex {
+    padding-right: 5rem;
+  }
+
+  /* Main sits beside the thin sidebar */
+  .main {
+    margin-left: 72px !important;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .bodyCollapse { margin-left: 72px !important; }
+  .input-bar-wrapper { left: 72px; padding: 0 1rem 1.5rem; }
+  .afterSubmit { left: 72px; right: 0; }
+  .scroll-to-bottom-btn { right: 1.5rem; bottom: 10rem; }
+  .quick-actions-grid { grid-template-columns: 1fr; }
+
+  .text-container { margin: 1rem 0.5rem; }
+  .main-mid { margin: 0.8rem 0.5rem; }
+  .response-container { padding: 1.4rem 1rem; }
+
+  .main-btns {
+    padding: 1.2rem 1.2rem;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+  }
+
+  .main-btns button {
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+    padding: 0.5rem;
+    padding-right: 0.8rem;
+  }
+
+  .main-top-upper {
+    width: 90%;
+    margin-left: 1.5rem;
+  }
+
+  .main-top-upper h2 {
+    font-size: 2.6rem;
+  }
+
+  .main-top-upper p {
+    font-size: 1.3rem;
+  }
+
+  .icon-box {
+    top: 2rem;
+    right: 2rem;
+    width: 140px;
+  }
+
+  .lower-side {
+    height: auto;
+    min-height: 20rem;
+    margin: 1.5rem;
+  }
+
+  .chat-interface {
+    padding-bottom: 14rem;
+  }
+}
